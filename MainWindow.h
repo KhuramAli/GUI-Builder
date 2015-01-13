@@ -6,7 +6,8 @@
 
 class QAction;
 class QMenu;
-class QListWidget;
+class QDockWidget;
+class QPushButton;
 
 class MainWindow: public QMainWindow
 {
@@ -22,10 +23,14 @@ private:
     void createActions();
     void createMenus();
     void createDockToolBox();
+    void mousePressEvent(QMouseEvent *event);
 
     QMenu *fileMenu;
+    QMenu *viewMenu;
     QAction *exitAct;
-    QListWidget *ToolBox;
+
+    QPushButton *button1;
+
 private slots:
 
 

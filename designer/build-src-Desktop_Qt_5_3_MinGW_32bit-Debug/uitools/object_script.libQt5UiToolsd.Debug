@@ -1,0 +1,12 @@
+CREATE \lib\libQt5UiToolsd.a
+ADDMOD .obj\debug\quiloader.o
+ADDMOD .obj\debug\abstractformbuilder.o
+ADDMOD .obj\debug\formbuilder.o
+ADDMOD .obj\debug\ui4.o
+ADDMOD .obj\debug\properties.o
+ADDMOD .obj\debug\formbuilderextra.o
+ADDMOD .obj\debug\resourcebuilder.o
+ADDMOD .obj\debug\textbuilder.o
+ADDMOD .obj\debug\moc_quiloader.o
+ADDMOD .obj\debug\moc_properties_p.o
+SAVE

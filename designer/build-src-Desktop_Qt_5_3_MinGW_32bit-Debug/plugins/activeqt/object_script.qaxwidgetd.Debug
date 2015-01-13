@@ -1,0 +1,12 @@
+INPUT(
+./.obj\debug\qaxwidgetextrainfo.o
+./.obj\debug\qaxwidgetplugin.o
+./.obj\debug\qdesigneraxwidget.o
+./.obj\debug\qaxwidgetpropertysheet.o
+./.obj\debug\qaxwidgettaskmenu.o
+./.obj\debug\moc_qaxwidgetextrainfo.o
+./.obj\debug\moc_qaxwidgetplugin.o
+./.obj\debug\moc_qdesigneraxwidget.o
+./.obj\debug\moc_qaxwidgetpropertysheet.o
+./.obj\debug\moc_qaxwidgettaskmenu.o
+);

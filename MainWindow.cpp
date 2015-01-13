@@ -1,21 +1,25 @@
 #include <QtGui>
+#include <QFrame>
 #include <QVBoxLayout>
 #include <QStatusBar>
 #include <QAction>
 #include <QMenuBar>
 #include <QMenu>
-#include <QListWidget>
 #include <QDockWidget>
 #include <QPushButton>
 
 
 #include "MainWindow.h"
+#include "toolbox.h"
 
 
 MainWindow::MainWindow()
 {
-    QWidget *widget = new QWidget;
-    setCentralWidget(widget);
+    QFrame *centerFrame = new QFrame;
+    centerFrame->setFrameStyle(QFrame::StyledPanel);
+    centerFrame->acceptDrops();
+
+    setCentralWidget(centerFrame);
 
     QWidget *topFiller = new QWidget;
     topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -27,7 +31,7 @@ MainWindow::MainWindow()
     layout->setMargin(5);
     layout->addWidget(topFiller);
     layout->addWidget(bottomFiller);
-    widget->setLayout(layout);
+    centerFrame->setLayout(layout);
 
     createActions();
     createMenus();
@@ -55,6 +59,7 @@ void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(exitAct);
+
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
@@ -66,17 +71,35 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 
 void MainWindow::createDockToolBox()
 {
-    QDockWidget *toolBox = new QDockWidget(tr("Tool Box"), this);
-    toolBox->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea | Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
+    ToolBox *dock = new ToolBox ;
 
-    addDockWidget(Qt::LeftDockWidgetArea, toolBox);
+  //  QDockWidget *toolBox = new QDockWidget(tr("Tool Box"));
+    dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea | Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
 
-    //adding controls
+    addDockWidget(Qt::LeftDockWidgetArea, dock);
+
+    /*
     QWidget *controlWidget = new QWidget (this);
     QPushButton *button1 = new QPushButton ("Push Button", controlWidget);
     QHBoxLayout *toolBoxLayout = new QHBoxLayout;
+
     toolBoxLayout->addWidget(button1);
     controlWidget->setLayout(toolBoxLayout);
     toolBox->setWidget(controlWidget);
-
+*/
 }
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button()==Qt::LeftButton && button1->geometry().contains(event->pos()))
+    {
+        QDrag *drag = new QDrag(this);
+        QMimeData *mimeData = new QMimeData;
+
+        drag->setMimeData(mimeData);
+        drag->setHotSpot(button1->pos());
+
+        Qt::DropAction dropAction = drag->exec();
+    }
+}
+
