@@ -52,7 +52,6 @@ void MainWindow::createActions()
     exitAct->setShortcuts(QKeySequence::Quit);
     exitAct->setStatusTip(tr("Close Application"));
     connect (exitAct, SIGNAL(triggered()), this, SLOT(close()));
-
 }
 
 void MainWindow::createMenus()
