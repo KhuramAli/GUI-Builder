@@ -494,7 +494,7 @@ QString QDesignerActions::uiExtension() const
         = qt_extension<QDesignerLanguageExtension *>(m_core->extensionManager(), m_core);
     if (lang)
         return lang->uiExtension();
-    return QStringLiteral("ui");
+    return QStringLiteral("xml");
 }
 
 QAction *QDesignerActions::createRecentFilesMenu()
@@ -595,7 +595,7 @@ bool QDesignerActions::openForm(QWidget *parent)
     closePreview();
     const QString extension = uiExtension();
     const QStringList fileNames = QFileDialog::getOpenFileNames(parent, tr("Open Form"),
-        m_openDirectory, tr("Designer UI files (*.%1);;All Files (*)").arg(extension), 0, QFileDialog::DontUseSheet);
+        m_openDirectory, tr("Flexview GUI files (*.%1);;All Files (*)").arg(extension), 0, QFileDialog::DontUseSheet);
 
     if (fileNames.isEmpty())
         return false;
@@ -632,7 +632,7 @@ bool QDesignerActions::saveFormAs(QDesignerFormWindowInterface *fw)
         dir += extension;
     }
 
-    const  QString saveFile = getSaveFileNameWithExtension(fw, tr("Save Form As"), dir, tr("Designer UI files (*.%1);;All Files (*)").arg(extension), extension);
+    const  QString saveFile = getSaveFileNameWithExtension(fw, tr("Save Form As"), dir, tr("Flexview GUI files (*.%1);;All Files (*)").arg(extension), extension);
     if (saveFile.isEmpty())
         return false;
 
@@ -719,7 +719,7 @@ void QDesignerActions::saveFormAsTemplate()
 
 void QDesignerActions::notImplementedYet()
 {
-    QMessageBox::information(core()->topLevel(), tr("Designer"), tr("Feature not implemented yet!"));
+    QMessageBox::information(core()->topLevel(), tr("Flexview GUI Builder"), tr("Feature not implemented yet!"));
 }
 
 void QDesignerActions::closePreview()
@@ -792,7 +792,7 @@ bool QDesignerActions::readInForm(const QString &fileName)
                 const QString extension = uiExtension();
                 fn = QFileDialog::getOpenFileName(core()->topLevel(),
                                                   tr("Open Form"), m_openDirectory,
-                                                  tr("Designer UI files (*.%1);;All Files (*)").arg(extension), 0, QFileDialog::DontUseSheet);
+                                                  tr("Flexview GUI files (*.%1);;All Files (*)").arg(extension), 0, QFileDialog::DontUseSheet);
 
                 if (fn.isEmpty())
                     return false;
@@ -852,7 +852,7 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
     if (check) {
         const QStringList problems = fw->checkContents();
         if (!problems.isEmpty())
-            QMessageBox::information(fw->window(), tr("Qt Designer"), problems.join(QStringLiteral("<br>")));
+            QMessageBox::information(fw->window(), tr("Flexview GUI Builder"), problems.join(QStringLiteral("<br>")));
     }
 
     QString contents = fw->contents();
@@ -1063,7 +1063,7 @@ void QDesignerActions::showHelp(const QString &url)
     if (!m_assistantClient.showPage(url, &errorMessage))
         QMessageBox::warning(core()->topLevel(), tr("Assistant"), errorMessage);
 }
-
+/*
 void QDesignerActions::aboutDesigner()
 {
     VersionDialog mb(core()->topLevel());
@@ -1075,7 +1075,7 @@ void QDesignerActions::aboutDesigner()
         messageBox.exec();
     }
 }
-
+*/
 QAction *QDesignerActions::editWidgets() const
 {
     return m_editWidgetsAction;

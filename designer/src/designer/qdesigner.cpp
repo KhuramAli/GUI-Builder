@@ -67,8 +67,8 @@
 
 QT_BEGIN_NAMESPACE
 
-static const char *designerApplicationName = "Designer";
-static const char *designerWarningPrefix = "Designer: ";
+static const char *designerApplicationName = "Flexview GUI Builder";
+static const char *designerWarningPrefix = "GUI Builder: ";
 static QtMessageHandler previousMessageHandler = 0;
 
 static void designerMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
@@ -88,12 +88,12 @@ QDesigner::QDesigner(int &argc, char **argv)
       m_client(0),
       m_workbench(0), m_suppressNewFormShow(false)
 {
-    setOrganizationName(QStringLiteral("QtProject"));
+    setOrganizationName(QStringLiteral("Flexview"));
     setApplicationName(QLatin1String(designerApplicationName));
     QDesignerComponents::initializeResources();
 
 #ifndef Q_OS_MAC
-    setWindowIcon(QIcon(QStringLiteral(":/qt-project.org/designer/images/designer.png")));
+    setWindowIcon(QIcon(QStringLiteral(":/qt-project.org/designer/images/logo02.gif")));
 #endif
     initialize();
 }
