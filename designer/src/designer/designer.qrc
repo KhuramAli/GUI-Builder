@@ -1,5 +1,6 @@
-<!DOCTYPE RCC><RCC version="1.0">
+<RCC>
     <qresource prefix="/qt-project.org/designer">
         <file>images/designer.png</file>
+        <file>images/logo02.png</file>
     </qresource>
 </RCC>
