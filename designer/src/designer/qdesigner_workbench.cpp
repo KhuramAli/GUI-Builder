@@ -214,7 +214,7 @@ QDesignerWorkbench::QDesignerWorkbench()  :
 
     m_windowMenu = addMenu(m_globalMenuBar, tr("&Window"), m_actionManager->windowActions()->actions());
 
-    addMenu(m_globalMenuBar, tr("&Help"), m_actionManager->helpActions()->actions());
+   // addMenu(m_globalMenuBar, tr("&Help"), m_actionManager->helpActions()->actions());
 
     //  Add the tools in view menu order
     QActionGroup *viewActions = new QActionGroup(this);

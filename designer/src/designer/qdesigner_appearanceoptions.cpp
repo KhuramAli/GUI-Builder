@@ -135,7 +135,7 @@ QDesignerAppearanceOptionsPage::QDesignerAppearanceOptionsPage(QDesignerFormEdit
 QString QDesignerAppearanceOptionsPage::name() const
 {
     //: Tab in preferences dialog
-    return QCoreApplication::translate("QDesignerAppearanceOptionsPage", "Appearance");
+    return QCoreApplication::translate("GUIBuilderOptionsPage", "Appearance");
 }
 
 QWidget *QDesignerAppearanceOptionsPage::createPage(QWidget *parent)

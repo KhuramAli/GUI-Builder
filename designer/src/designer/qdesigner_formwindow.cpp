@@ -172,7 +172,7 @@ int QDesignerFormWindow::getNumberOfUntitledWindows() const
 
     int maxUntitled = 0;
     // Find the number of untitled windows excluding ourselves.
-    // Do not fall for 'untitled.ui', match with modified place holder.
+    // Do not fall for 'untitled.xml', match with modified place holder.
     // This will cause some problems with i18n, but for now I need the string to be "static"
     QRegExp rx(QStringLiteral("untitled( (\\d+))?\\[\\*\\]"));
     for (int i = 0; i < totalWindows; ++i) {
