@@ -1063,7 +1063,7 @@ void QDesignerActions::showHelp(const QString &url)
     if (!m_assistantClient.showPage(url, &errorMessage))
         QMessageBox::warning(core()->topLevel(), tr("Assistant"), errorMessage);
 }
-/*
+
 void QDesignerActions::aboutDesigner()
 {
     VersionDialog mb(core()->topLevel());
@@ -1075,7 +1075,7 @@ void QDesignerActions::aboutDesigner()
         messageBox.exec();
     }
 }
-*/
+
 QAction *QDesignerActions::editWidgets() const
 {
     return m_editWidgetsAction;
