@@ -135,7 +135,7 @@ QList<QToolBar *>  MainWindowBase::createToolBars(const QDesignerActions *action
 
 QString MainWindowBase::mainWindowTitle()
 {
-    return tr("Qt Designer");
+    return tr("Flexview GUI Builder");
 }
 
 // Use the minor Qt version as settings versions to avoid conflicts
