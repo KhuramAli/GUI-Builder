@@ -1,6 +1,8 @@
 QT += core-private widgets xml network designer-private designercomponents-private
 qtHaveModule(printsupport): QT += printsupport
 
+CONFIG += static
+
 INCLUDEPATH += \
     ../lib/sdk \
     ../lib/extension \
