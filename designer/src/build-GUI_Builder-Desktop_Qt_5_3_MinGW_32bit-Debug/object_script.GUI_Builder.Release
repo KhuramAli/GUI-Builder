@@ -17,6 +17,7 @@ INPUT(
 ./.obj\release\preferencesdialog.o
 ./.obj\release\assistantclient.o
 ./.obj\release\mainwindow.o
+./.obj\release\QtWddx.o
 ./.obj\release\qrc_designer.o
 ./.obj\release\qrc_qttoolbardialog.o
 ./.obj\release\moc_fontpanel.o
