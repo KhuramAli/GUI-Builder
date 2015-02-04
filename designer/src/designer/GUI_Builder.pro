@@ -36,7 +36,8 @@ HEADERS += \
     appfontdialog.h \
     preferencesdialog.h \
     assistantclient.h \
-    mainwindow.h
+    mainwindow.h \
+    QtWddx.h
 
 SOURCES += main.cpp \
     qdesigner.cpp \
@@ -53,7 +54,8 @@ SOURCES += main.cpp \
     appfontdialog.cpp \
     preferencesdialog.cpp \
     assistantclient.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    QtWddx.cpp
 
 PRECOMPILED_HEADER=qdesigner_pch.h
 
