@@ -237,7 +237,7 @@ void QtWddx::serialize(QDomDocument &xml, QDomElement &node, const QVariant &dat
     qDebug("unhandled type=%s", data.typeName());
 }
 
-QString QtWddx::serialize(const QVariant &datavar) {
+QString QtWddx::serialize(const QByteArray &datavar) {
     // Ok, we got some qvariant and we want to serialize it... initialize a domdocument
 
     QDomDocument xml;
@@ -250,7 +250,7 @@ QString QtWddx::serialize(const QVariant &datavar) {
 
     QDomElement data = xml.createElement("data");
     root.appendChild(data);
-
+    xml.setContent(datavar);
     serialize(xml, data, datavar);
 
     return xml.toString(1); // no indent
