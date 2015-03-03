@@ -104,8 +104,8 @@ void QDesignerToolWindow::showMe(bool v)
 {
     // Access the QMdiSubWindow in MDI mode.
     if (QWidget *target = m_workbench->mode() == DockedMode ? parentWidget() : this) {
-        if (v)
-            target->setWindowState(target->windowState() & ~Qt::WindowMinimized);
+     if (v)
+           target->setWindowState(target->windowState() & ~Qt::WindowMinimized);
         target->setVisible(v);
     }
 }

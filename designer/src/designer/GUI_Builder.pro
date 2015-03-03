@@ -3,6 +3,7 @@ qtHaveModule(printsupport): QT += printsupport
 
 CONFIG += static
 
+
 INCLUDEPATH += \
     ../lib/sdk \
     ../lib/extension \
@@ -37,7 +38,7 @@ HEADERS += \
     preferencesdialog.h \
     assistantclient.h \
     mainwindow.h \
-    QtWddx.h
+    domParser.h
 
 SOURCES += main.cpp \
     qdesigner.cpp \
@@ -55,7 +56,7 @@ SOURCES += main.cpp \
     preferencesdialog.cpp \
     assistantclient.cpp \
     mainwindow.cpp \
-    QtWddx.cpp
+    domParser.cpp
 
 PRECOMPILED_HEADER=qdesigner_pch.h
 

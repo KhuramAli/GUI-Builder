@@ -51,6 +51,7 @@
 #include "preferencesdialog.h"
 #include "appfontdialog.h"
 
+
 #include <pluginmanager_p.h>
 #include <qdesigner_formbuilder_p.h>
 #include <qdesigner_utils_p.h>
@@ -861,9 +862,15 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
             contents.replace(QLatin1Char('\n'), QStringLiteral("\r\n"));
     }
     const QByteArray utf8Array = contents.toUtf8();
+
     m_workbench->updateBackup(fw);
 
     QFile f(saveFile);
+    //writting wddx packet file.
+    f.open(QFile::ReadOnly);
+    xml.writeWddx(&f, saveFile);
+    f.close();
+
     while (!f.open(QFile::WriteOnly)) {
         QMessageBox box(QMessageBox::Warning,
                         tr("Save Form?"),
@@ -902,6 +909,7 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
             }
             f.setFileName(fileName);
             fw->setFileName(fileName);
+
         }
         // loop back around...
     }
@@ -922,7 +930,15 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
             return false;
         }
     }
+
+
     f.close();
+
+    //writting wddx packet file.
+    f.open(QFile::ReadOnly);
+    xml.writeWddx(&f,saveFile);
+    f.close();
+
     removeBackup(backupFile);
     addRecentFile(saveFile);
     m_saveDirectory = QFileInfo(f).absolutePath();
@@ -930,6 +946,8 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
     fw->setDirty(false);
     fw->parentWidget()->setWindowModified(false);
     return true;
+
+
 }
 
 void QDesignerActions::shutdown()

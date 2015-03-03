@@ -17,7 +17,7 @@ INPUT(
 ./.obj\debug\preferencesdialog.o
 ./.obj\debug\assistantclient.o
 ./.obj\debug\mainwindow.o
-./.obj\debug\QtWddx.o
+./.obj\debug\domParser.o
 ./.obj\debug\qrc_designer.o
 ./.obj\debug\qrc_qttoolbardialog.o
 ./.obj\debug\moc_fontpanel.o

@@ -44,14 +44,17 @@
 
 #include "assistantclient.h"
 #include "qdesigner_settings.h"
+#include "domParser.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
 #ifndef QT_NO_PRINTER
 #include <QtPrintSupport/QPrinter>
+
 #endif
 
 QT_BEGIN_NAMESPACE
+
 
 class QDesignerWorkbench;
 
@@ -154,6 +157,7 @@ private slots:
     void formWindowSettingsChanged(QDesignerFormWindowInterface *fw);
 
 private:
+
     QAction *createRecentFilesMenu();
     bool saveFormAs(QDesignerFormWindowInterface *fw);
     void fixActionContext();
@@ -168,6 +172,8 @@ private:
     bool ensureBackupDirectories();
     QPixmap createPreviewPixmap(QDesignerFormWindowInterface *fw);
     qdesigner_internal::PreviewConfiguration previewConfiguration();
+
+    domParser xml; //for wddx packet file writing.
 
     enum { MaxRecentFiles = 10 };
     QDesignerWorkbench *m_workbench;
