@@ -22,6 +22,7 @@ private:
     struct widgetStruct
     {
         QString widgetName;
+        QString discription;
         QString name;
         QString type;
         QString title;

@@ -867,9 +867,9 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
 
     QFile f(saveFile);
     //writting wddx packet file.
-    f.open(QFile::ReadOnly);
-    xml.writeWddx(&f, saveFile);
-    f.close();
+   // f.open(QFile::ReadOnly);
+   // xml.writeWddx(&f, saveFile);
+    //f.close();
 
     while (!f.open(QFile::WriteOnly)) {
         QMessageBox box(QMessageBox::Warning,

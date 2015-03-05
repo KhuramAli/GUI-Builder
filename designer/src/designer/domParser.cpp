@@ -41,7 +41,7 @@ void domParser::writeWddx(QFile *file, QString savefile)
     dir.mkdir("FlexView");
     dir.cd("FlexView");
 
- QDomElement root = doc.documentElement();
+    QDomElement root = doc.documentElement();
 
  parseElement(root,_widget);
 
@@ -69,6 +69,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QPbutton;
                 flexWidget->name = "Button";
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -78,7 +79,8 @@ void domParser::parseElement(QDomElement root, QString tag)
              widgetStruct * flexWidget = new widgetStruct;
              flexWidget->widgetName = _QWidget;
              flexWidget->name = "VBox";
-            widget(parentElement, _widget, flexWidget);
+             flexWidget->discription = parentElement.attribute(_name);
+             widget(parentElement, _widget, flexWidget);
         }
 
         //identifying horizantal layouts.
@@ -87,13 +89,15 @@ void domParser::parseElement(QDomElement root, QString tag)
              widgetStruct * flexWidget = new widgetStruct;
              flexWidget->widgetName = _QWidget;
              flexWidget->name = "HBox";
-            widget(parentElement, _widget, flexWidget);
+             flexWidget->discription = parentElement.attribute(_name);
+             widget(parentElement, _widget, flexWidget);
         }
             //identfying radiobutton and call pushbutton function to handle it.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QRbutton)
         {
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QRbutton;
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -102,6 +106,7 @@ void domParser::parseElement(QDomElement root, QString tag)
         {
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCbox;
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -111,6 +116,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QTview;
                 flexWidget->name = "Table";
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -120,6 +126,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCombo;
                 flexWidget->name = "ComboBox";
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -129,6 +136,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QPtext;
                 flexWidget->name = "PlainTextEdit";
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -138,6 +146,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QLedit;
                 flexWidget->name = "LineEdit";
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -147,6 +156,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCalender;
                 flexWidget->name = "Calander";
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -155,6 +165,7 @@ void domParser::parseElement(QDomElement root, QString tag)
         {
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QLable;
+                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -248,6 +259,7 @@ void domParser::writeFile(widgetStruct *newWidget)
     fileName.append(".xml-dev");
     fileName.prepend("/");
 
+
     fileName.prepend(dir.absolutePath());
 
     QFile file (fileName);
@@ -263,7 +275,15 @@ void domParser::writeFile(widgetStruct *newWidget)
     uiWriter.writeStartElement("data");
     uiWriter.writeStartElement("struct");
 
-    titleDefault();
+    uiWriter.writeStartElement("var");
+    uiWriter.writeAttribute("name","description");
+    uiWriter.writeTextElement("string", newWidget->discription);
+    uiWriter.writeEndElement();
+
+    uiWriter.writeStartElement("var");
+    uiWriter.writeAttribute("name", "name");
+    uiWriter.writeTextElement("string", formTitle);
+    uiWriter.writeEndElement();
 
 // incase of Checkbox.
     if (newWidget->widgetName == _QCbox)
@@ -339,21 +359,6 @@ void domParser::writeFile(widgetStruct *newWidget)
 newWidget = {0};
 file.close();
 }// wirte file funtion over loaded for widget struct.
-
-
-
-void domParser::titleDefault()
-{
-        uiWriter.writeStartElement("var");
-        uiWriter.writeAttribute("name","description");
-        uiWriter.writeTextElement("string", formTitle);
-        uiWriter.writeEndElement();
-
-        uiWriter.writeStartElement("var");
-        uiWriter.writeAttribute("name", "name");
-        uiWriter.writeTextElement("string", formTitle);
-        uiWriter.writeEndElement();
-}//titleDefault function
 
 
 void domParser::closingDefault()
