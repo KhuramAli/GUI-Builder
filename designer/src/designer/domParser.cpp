@@ -63,7 +63,7 @@ void domParser::parseElement(QDomElement root, QString tag)
             parentElement = elm.toElement();
 
         }
-            //identfying pushbutton and call pushbutton function to handle it.
+            //identfying pushbutton.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QPbutton)
         {
                 widgetStruct * flexWidget = new widgetStruct;
@@ -92,25 +92,27 @@ void domParser::parseElement(QDomElement root, QString tag)
              flexWidget->discription = parentElement.attribute(_name);
              widget(parentElement, _widget, flexWidget);
         }
-            //identfying radiobutton and call pushbutton function to handle it.
+            //identfying radiobutton.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QRbutton)
         {
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QRbutton;
+                flexWidget->name = "RadioButton";
                 flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying checkbox and call pushbutton function to handle it.
+            //identfying checkbox.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QCbox)
         {
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCbox;
+                flexWidget->name = "CheckBox";
                 flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying tableview and call pushbutton function to handle it.
+            //identfying tableview.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QTview)
         {
                 widgetStruct * flexWidget = new widgetStruct;
@@ -120,7 +122,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying combobox and call pushbutton function to handle it.
+            //identfying combobox.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QCombo)
         {
                 widgetStruct * flexWidget = new widgetStruct;
@@ -130,7 +132,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying plainTextEdit and call pushbutton function to handle it.
+            //identfying plainTextEdit.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QPtext)
         {
                 widgetStruct * flexWidget = new widgetStruct;
@@ -140,7 +142,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying LineEdit and call pushbutton function to handle it.
+            //identfying LineEdit.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QLedit)
         {
                 widgetStruct * flexWidget = new widgetStruct;
@@ -150,7 +152,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying calander widget and call pushbutton function to handle it.
+            //identfying calander widget.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QCalender)
         {
                 widgetStruct * flexWidget = new widgetStruct;
@@ -160,11 +162,12 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widget(parentElement, _widget, flexWidget);
         }
 
-            //identfying lable and call pushbutton function to handle it.
+            //identfying lable.
         if (parentElement.tagName() == _widget && parentElement.attribute(_tagclass) == _QLable)
         {
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QLable;
+                flexWidget->name = "Lable";
                 flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
@@ -259,12 +262,34 @@ void domParser::writeFile(widgetStruct *newWidget)
     fileName.append(".xml-dev");
     fileName.prepend("/");
 
+    //Making custom directories based on widget type.
+
+    if (newWidget->widgetName != _QWidget)
+    {
+        dir.mkdir("Widget");
+        dir.cd("Widget");
+        dir.mkdir("Control");
+        dir.cd("Control");
+        dir.mkdir(newWidget->name);
+        dir.cd(newWidget->name);
+    }else{
+        dir.mkdir("views");
+        dir.cd("views");
+    }
 
     fileName.prepend(dir.absolutePath());
 
     QFile file (fileName);
     file.open(QIODevice::WriteOnly);
 
+     if (newWidget->widgetName != _QWidget)
+     {
+        dir.cdUp();
+        dir.cdUp();
+        dir.cdUp();
+    }else{
+         dir.cdUp();
+     }
     uiWriter.setAutoFormatting(true);
     uiWriter.setDevice(&file);
 
