@@ -262,6 +262,9 @@ void domParser::writeFile(widgetStruct *newWidget)
     fileName.append(".xml-dev");
     fileName.prepend("/");
 
+    QString Description = formTitle;
+    Description.append(newWidget->discription);
+
     //Making custom directories based on widget type.
 
     if (newWidget->widgetName != _QWidget)
@@ -302,7 +305,7 @@ void domParser::writeFile(widgetStruct *newWidget)
 
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name","description");
-    uiWriter.writeTextElement("string", newWidget->discription);
+    uiWriter.writeTextElement("string", Description);
     uiWriter.writeEndElement();
 
     uiWriter.writeStartElement("var");
