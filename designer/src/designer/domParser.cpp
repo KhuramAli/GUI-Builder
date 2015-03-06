@@ -1,4 +1,5 @@
 #include "domParser.h"
+#include "flexview_properties.h"
 #include <iostream>
 #include <qDebug>
 #include <QFileInfo>
@@ -37,13 +38,16 @@ void domParser::writeWddx(QFile *file, QString savefile)
         }
 
     dir.cd (fileDir.path());
-    qDebug () << dir.currentPath();
     dir.mkdir("FlexView");
     dir.cd("FlexView");
 
     QDomElement root = doc.documentElement();
 
- parseElement(root,_widget);
+    flexview_properties * flexDialog = new flexview_properties;
+    flexDialog->exec();
+    flexProList = flexDialog->flexProList();
+
+    parseElement(root,_widget);
 
 
 }//parser function
@@ -69,7 +73,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QPbutton;
                 flexWidget->name = "Button";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -79,7 +82,6 @@ void domParser::parseElement(QDomElement root, QString tag)
              widgetStruct * flexWidget = new widgetStruct;
              flexWidget->widgetName = _QWidget;
              flexWidget->name = "VBox";
-             flexWidget->discription = parentElement.attribute(_name);
              widget(parentElement, _widget, flexWidget);
         }
 
@@ -89,7 +91,6 @@ void domParser::parseElement(QDomElement root, QString tag)
              widgetStruct * flexWidget = new widgetStruct;
              flexWidget->widgetName = _QWidget;
              flexWidget->name = "HBox";
-             flexWidget->discription = parentElement.attribute(_name);
              widget(parentElement, _widget, flexWidget);
         }
             //identfying radiobutton.
@@ -98,7 +99,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QRbutton;
                 flexWidget->name = "RadioButton";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -108,7 +108,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCbox;
                 flexWidget->name = "CheckBox";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -118,7 +117,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QTview;
                 flexWidget->name = "Table";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -128,7 +126,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCombo;
                 flexWidget->name = "ComboBox";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -138,7 +135,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QPtext;
                 flexWidget->name = "PlainTextEdit";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -148,7 +144,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QLedit;
                 flexWidget->name = "LineEdit";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -158,7 +153,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QCalender;
                 flexWidget->name = "Calander";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -168,7 +162,6 @@ void domParser::parseElement(QDomElement root, QString tag)
                 widgetStruct * flexWidget = new widgetStruct;
                 flexWidget->widgetName = _QLable;
                 flexWidget->name = "Lable";
-                flexWidget->discription = parentElement.attribute(_name);
                 widget(parentElement, _widget, flexWidget);
         }
 
@@ -263,7 +256,8 @@ void domParser::writeFile(widgetStruct *newWidget)
     fileName.prepend("/");
 
     QString Description = formTitle;
-    Description.append(newWidget->discription);
+    Description.append(newWidget->title);
+    Description.append(newWidget->name);
 
     //Making custom directories based on widget type.
 
@@ -414,25 +408,31 @@ void domParser::closingDefault()
     //adding form_validation with default value '1'
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "form_validation");
-    uiWriter.writeTextElement("string","1");
+
+    if (flexProList.at(3) == "true")
+    {
+        uiWriter.writeTextElement("string","1");
+    }else{
+            uiWriter.writeTextElement("string","0");
+    }
     uiWriter.writeEndElement();
 
     //adding output with default value
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "output");
-    uiWriter.writeTextElement("string","replace");
+    uiWriter.writeTextElement("string",flexProList.at(2));
     uiWriter.writeEndElement();
 
     //adding message with default value
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "message");
-    uiWriter.writeTextElement("string/","");
+    uiWriter.writeTextElement("string/",flexProList.at(0));
     uiWriter.writeEndElement();
 
     //adding comment with default value
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "comment");
-    uiWriter.writeTextElement("string/","");
+    uiWriter.writeTextElement("string/",flexProList.at(1));
     uiWriter.writeEndElement();
 
     //adding current version with default value

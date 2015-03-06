@@ -8,6 +8,8 @@
 #include <QVector>
 #include <QHash>
 #include <QDir>
+#include <QStringList>
+
 
 class domParser
 {
@@ -22,7 +24,6 @@ private:
     struct widgetStruct
     {
         QString widgetName;
-        QString discription;
         QString name;
         QString type;
         QString title;
@@ -33,6 +34,7 @@ private:
 
     QDir dir;
     QString formTitle;
+    QStringList flexProList;
     QHash <QString, QString>runAction;
     QVector <widgetStruct*> list;
 

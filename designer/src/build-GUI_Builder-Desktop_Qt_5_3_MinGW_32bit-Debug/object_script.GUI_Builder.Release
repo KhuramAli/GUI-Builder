@@ -18,6 +18,7 @@ INPUT(
 ./.obj\release\assistantclient.o
 ./.obj\release\mainwindow.o
 ./.obj\release\domParser.o
+./.obj\release\flexview_properties.o
 ./.obj\release\qrc_designer.o
 ./.obj\release\qrc_qttoolbardialog.o
 ./.obj\release\moc_fontpanel.o
@@ -34,4 +35,5 @@ INPUT(
 ./.obj\release\moc_appfontdialog.o
 ./.obj\release\moc_preferencesdialog.o
 ./.obj\release\moc_mainwindow.o
+./.obj\release\moc_flexview_properties.o
 );

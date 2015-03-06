@@ -38,7 +38,8 @@ HEADERS += \
     preferencesdialog.h \
     assistantclient.h \
     mainwindow.h \
-    domParser.h
+    domParser.h \
+    flexview_properties.h
 
 SOURCES += main.cpp \
     qdesigner.cpp \
@@ -56,7 +57,8 @@ SOURCES += main.cpp \
     preferencesdialog.cpp \
     assistantclient.cpp \
     mainwindow.cpp \
-    domParser.cpp
+    domParser.cpp \
+    flexview_properties.cpp
 
 PRECOMPILED_HEADER=qdesigner_pch.h
 

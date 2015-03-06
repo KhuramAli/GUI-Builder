@@ -18,6 +18,7 @@ INPUT(
 ./.obj\debug\assistantclient.o
 ./.obj\debug\mainwindow.o
 ./.obj\debug\domParser.o
+./.obj\debug\flexview_properties.o
 ./.obj\debug\qrc_designer.o
 ./.obj\debug\qrc_qttoolbardialog.o
 ./.obj\debug\moc_fontpanel.o
@@ -34,4 +35,5 @@ INPUT(
 ./.obj\debug\moc_appfontdialog.o
 ./.obj\debug\moc_preferencesdialog.o
 ./.obj\debug\moc_mainwindow.o
+./.obj\debug\moc_flexview_properties.o
 );
