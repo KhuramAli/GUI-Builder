@@ -330,6 +330,10 @@ void domParser::writeFile(widgetStruct *newWidget)
             uiWriter.writeTextElement("string", "false");
             uiWriter.writeEndElement();
              }
+        uiWriter.writeStartElement("var");
+        uiWriter.writeAttribute("name","path");
+        uiWriter.writeTextElement("string",flexview_properties::formPro.value("path"));
+        uiWriter.writeEndElement();
     }
 
 //incase of Push Button.
@@ -492,6 +496,11 @@ QByteArray domParser::writeFlexview(QDomDocument doc)
     properties.appendChild(checkBox);
     QDomText cb = doc.createTextNode(flexview_properties::formPro.value("checkBox"));
     checkBox.appendChild(cb);
+
+    QDomElement path = doc.createElement("path");
+    properties.appendChild(path);
+    QDomText pt = doc.createTextNode(flexview_properties::formPro.value("path"));
+    checkBox.appendChild(pt);
 
     return doc.toByteArray();
 }
