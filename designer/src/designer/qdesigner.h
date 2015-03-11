@@ -95,6 +95,8 @@ private:
     QString m_initializationErrors;
     QString m_lastErrorMessage;
     bool m_suppressNewFormShow;
+
+
 };
 
 QT_END_NAMESPACE

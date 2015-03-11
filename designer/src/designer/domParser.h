@@ -28,15 +28,16 @@ private:
         QString type;
         QString title;
         QString layout;
+        QString help;
         QString action;
         QString geometry;
     };
 
     QDir dir;
     QString formTitle;
-    QStringList flexProList;
     QHash <QString, QString>runAction;
     QVector <widgetStruct*> list;
+    QStringList flexProList;
 
     void parseElement(QDomElement root, QString tag);
     void widget(QDomElement parentElement, QString att, widgetStruct * flexWidget);
@@ -47,6 +48,7 @@ private:
 
     void writeFile (widgetStruct * newWidget);
     void writeFile ();
+    QByteArray writeFlexview (QDomDocument doc);
 
 };
 

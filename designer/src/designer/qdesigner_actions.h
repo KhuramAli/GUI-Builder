@@ -45,6 +45,7 @@
 #include "assistantclient.h"
 #include "qdesigner_settings.h"
 #include "domParser.h"
+#include "flexview_properties.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
@@ -157,7 +158,7 @@ private slots:
     void formWindowSettingsChanged(QDesignerFormWindowInterface *fw);
 
 private:
-
+    void loadFlexviewPro (QString file);
     QAction *createRecentFilesMenu();
     bool saveFormAs(QDesignerFormWindowInterface *fw);
     void fixActionContext();

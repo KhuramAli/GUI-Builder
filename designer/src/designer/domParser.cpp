@@ -1,5 +1,8 @@
 #include "domParser.h"
 #include "flexview_properties.h"
+#include "qdesigner_toolwindow.h"
+
+
 #include <iostream>
 #include <qDebug>
 #include <QFileInfo>
@@ -11,6 +14,7 @@
 #define     _name          "name"
 #define     _property      "property"
 #define     _text          "text"
+#define     _toolTip       "toolTip"
 #define     _maintag       "QDialog"
 #define     _windowTitle   "windowTitle"
 #define     _QWidget       "QWidget"
@@ -43,13 +47,11 @@ void domParser::writeWddx(QFile *file, QString savefile)
 
     QDomElement root = doc.documentElement();
 
-    flexview_properties * flexDialog = new flexview_properties;
-    flexDialog->exec();
-    flexProList = flexDialog->flexProList();
-
     parseElement(root,_widget);
-
-
+    file->close();
+    file->open(QFile::WriteOnly);
+   file->write(writeFlexview(doc));
+    file->close();
 }//parser function
 
 
@@ -194,6 +196,11 @@ void domParser::widget(QDomElement parentElement, QString att, widgetStruct * fl
                         flexWidget->layout = childNode.toElement().text();
                     }
 
+                    if (childNode.toElement().tagName() == _property && childNode.toElement().attribute(_name) == _toolTip)
+                    {
+                        flexWidget->help = childNode.toElement().text();
+                    }
+
                     if (childNode.toElement().tagName() == _property && childNode.toElement().attribute(_name) == _text)
                     {
                         flexWidget->title = childNode.toElement().text();
@@ -304,7 +311,7 @@ void domParser::writeFile(widgetStruct *newWidget)
 
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "name");
-    uiWriter.writeTextElement("string", formTitle);
+    uiWriter.writeTextElement("string", newWidget->name);
     uiWriter.writeEndElement();
 
 // incase of Checkbox.
@@ -316,6 +323,7 @@ void domParser::writeFile(widgetStruct *newWidget)
             uiWriter.writeAttribute("name","checked");
             uiWriter.writeTextElement("string", "true");
             uiWriter.writeEndElement();
+
         }else{
             uiWriter.writeStartElement("var");
             uiWriter.writeAttribute("name","checked");
@@ -341,10 +349,22 @@ void domParser::writeFile(widgetStruct *newWidget)
             uiWriter.writeTextElement("string", "noicon");
             uiWriter.writeEndElement();
 
+            //adding help (tool tip)
+            uiWriter.writeStartElement("var");
+            uiWriter.writeAttribute("name","help");
+            uiWriter.writeTextElement("string", newWidget->help);
+            uiWriter.writeEndElement();
+
     }else{
         uiWriter.writeStartElement("var");
         uiWriter.writeAttribute("name","title");
         uiWriter.writeTextElement("string", newWidget->title);
+        uiWriter.writeEndElement();
+
+        //adding help (tool tip)
+        uiWriter.writeStartElement("var");
+        uiWriter.writeAttribute("name","help");
+        uiWriter.writeTextElement("string", newWidget->help);
         uiWriter.writeEndElement();
     }//if condition for checking push button.
 
@@ -376,6 +396,8 @@ void domParser::writeFile(widgetStruct *newWidget)
         uiWriter.writeTextElement("string", action);
         uiWriter.writeEndElement();
     }
+
+
     closingDefault();
     uiWriter.writeEndDocument();
 newWidget = {0};
@@ -385,6 +407,7 @@ file.close();
 
 void domParser::closingDefault()
 {
+
     //adding parametersConfig
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "parametersConfig");
@@ -409,7 +432,7 @@ void domParser::closingDefault()
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "form_validation");
 
-    if (flexProList.at(3) == "true")
+    if (flexview_properties::formPro.value("checkBox") == "true")
     {
         uiWriter.writeTextElement("string","1");
     }else{
@@ -420,19 +443,19 @@ void domParser::closingDefault()
     //adding output with default value
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "output");
-    uiWriter.writeTextElement("string",flexProList.at(2));
+    uiWriter.writeTextElement("string",flexview_properties::formPro.value("output"));
     uiWriter.writeEndElement();
 
     //adding message with default value
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "message");
-    uiWriter.writeTextElement("string/",flexProList.at(0));
+    uiWriter.writeTextElement("string/",flexview_properties::formPro.value("msg"));
     uiWriter.writeEndElement();
 
     //adding comment with default value
     uiWriter.writeStartElement("var");
     uiWriter.writeAttribute("name", "comment");
-    uiWriter.writeTextElement("string/",flexProList.at(1));
+    uiWriter.writeTextElement("string/",flexview_properties::formPro.value("comment"));
     uiWriter.writeEndElement();
 
     //adding current version with default value
@@ -440,5 +463,35 @@ void domParser::closingDefault()
     uiWriter.writeAttribute("name", "current version");
     uiWriter.writeTextElement("number","0");
     uiWriter.writeEndElement();
+
 }//closingDefault funtion
 
+QByteArray domParser::writeFlexview(QDomDocument doc)
+{
+
+    QDomElement properties = doc.createElement("Properties");
+    properties.setAttribute("name", "flexview");
+    doc.appendChild(properties);
+
+    QDomElement msg = doc.createElement("message");
+    properties.appendChild(msg);
+    QDomText t = doc.createTextNode(flexview_properties::formPro.value("msg"));
+    msg.appendChild(t);
+
+    QDomElement comment = doc.createElement("comment");
+    properties.appendChild(comment);
+    QDomText c = doc.createTextNode(flexview_properties::formPro.value("comment"));
+    comment.appendChild(c);
+
+    QDomElement update = doc.createElement("update");
+    properties.appendChild(update);
+    QDomText u = doc.createTextNode(flexview_properties::formPro.value("output"));
+    update.appendChild(u);
+
+    QDomElement checkBox = doc.createElement("checkBox");
+    properties.appendChild(checkBox);
+    QDomText cb = doc.createTextNode(flexview_properties::formPro.value("checkBox"));
+    checkBox.appendChild(cb);
+
+    return doc.toByteArray();
+}

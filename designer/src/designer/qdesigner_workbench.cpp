@@ -48,6 +48,7 @@
 #include "qdesigner_formwindow.h"
 #include "appfontdialog.h"
 
+
 #include <QtDesigner/QDesignerFormEditorInterface>
 #include <QtDesigner/QDesignerFormWindowInterface>
 #include <QtDesigner/QDesignerFormWindowManagerInterface>

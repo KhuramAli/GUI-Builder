@@ -2,25 +2,31 @@
 #define FLEXVIEW_PROPERTIES_H
 
 #include <QDialog>
+#include <QHash>
+#include <QLineEdit>
+#include <QTextEdit>
+
 
 class QCheckBox;
 class QLabel;
-class QLineEdit;
-class QTextEdit;
 class QPushButton;
 class QStringList;
 class QComboBox;
+class domParser;
 
 class flexview_properties : public QDialog
 {
     Q_OBJECT
 
+   friend class domParser;
+   friend class QDesignerActions;
+
 public:
     flexview_properties(QWidget *parent = 0);
-    QStringList flexProList ();
 
 private slots:
     void submit ();
+    void updatePro ();
 
 private:
     QLabel      *msgLabel;
@@ -30,9 +36,10 @@ private:
     QTextEdit   *commentLineEdit;
     QCheckBox   *validationCheckBox;
     QComboBox   *outputComboBox;
-    QPushButton *okButton;
+    QPushButton *addButton;
+    QPushButton *loadButton;
 
-    QStringList flexviewproperties;
+static QHash<QString,QString> formPro;
 
 };
 

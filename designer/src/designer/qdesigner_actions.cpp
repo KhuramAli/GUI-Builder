@@ -50,8 +50,9 @@
 #include "qdesigner_toolwindow.h"
 #include "preferencesdialog.h"
 #include "appfontdialog.h"
+#include "flexview_properties.h"
 
-
+#include <QXmlStreamReader>
 #include <pluginmanager_p.h>
 #include <qdesigner_formbuilder_p.h>
 #include <qdesigner_utils_p.h>
@@ -109,11 +110,13 @@ QT_BEGIN_NAMESPACE
 
 using namespace qdesigner_internal;
 
+
 const char *QDesignerActions::defaultToolbarPropertyName = "__qt_defaultToolBarAction";
 
 //#ifdef Q_OS_MAC
 #  define NONMODAL_PREVIEW
 //#endif
+
 
 static QAction *createSeparator(QObject *parent) {
     QAction * rc = new QAction(parent);
@@ -776,6 +779,7 @@ bool QDesignerActions::readInForm(const QString &fileName)
         if (workbench()->openForm(fn, &errorMessage)) {
             addRecentFile(fn);
             m_openDirectory = QFileInfo(fn).absolutePath();
+            loadFlexviewPro(fn);
             return true;
         } else {
             // prompt to reload
@@ -857,6 +861,7 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
     }
 
     QString contents = fw->contents();
+    //qDebug () << contents;
     if (qdesigner_internal::FormWindowBase *fwb = qobject_cast<qdesigner_internal::FormWindowBase *>(fw)) {
         if (fwb->lineTerminatorMode() == qdesigner_internal::FormWindowBase::CRLFLineTerminator)
             contents.replace(QLatin1Char('\n'), QStringLiteral("\r\n"));
@@ -1444,5 +1449,69 @@ void QDesignerActions::printPreviewImage()
     showStatusBarMessage(tr("Printed %1.").arg(QFileInfo(fw->fileName()).fileName()));
 #endif
 }
+
+void QDesignerActions::loadFlexviewPro(QString file)
+{
+
+    QFile fn(file);
+    if(!fn.open(QFile::ReadOnly))
+    {
+        qDebug () << "file couldn't open";
+    }
+    QByteArray  origXML = fn.readAll();
+
+   origXML.insert(38, "<root>");
+   origXML.append("</root>");
+
+    QDomDocument doc;
+    if(!doc.setContent(origXML))
+        {
+            qDebug() <<  "File error!";
+        }
+
+    QDomElement root = doc.documentElement();
+    QDomNodeList nodes = root.elementsByTagName("Properties");
+    QDomElement parentElement;
+
+
+        for (int i = 0; i < nodes.count(); i++)
+        {
+            QDomNodeList elm = nodes.at(i).childNodes();
+
+            for (int j = 0; j <elm.count(); j++)
+            {
+                QDomNode e = elm.at(j);
+
+                if(e.isElement())
+                {
+                    parentElement = e.toElement();
+
+                }
+
+                if (parentElement.tagName() == "message")
+                {
+                    flexview_properties::formPro.insert("msg", parentElement.text());
+                }
+
+                if (parentElement.tagName() == "comment")
+                {
+                    flexview_properties::formPro.insert("comment",  parentElement.text());
+                }
+
+                if (parentElement.tagName() == "update")
+                {
+                    flexview_properties::formPro.insert("update", parentElement.text());
+                }
+
+                if (parentElement.tagName() == "checkBox")
+                {
+                    flexview_properties::formPro.insert("checkBox", parentElement.text());
+                }
+            }
+}
+
+}
+
+
 
 QT_END_NAMESPACE

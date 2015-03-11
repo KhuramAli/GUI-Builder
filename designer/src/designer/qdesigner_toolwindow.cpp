@@ -43,6 +43,8 @@
 #include "qdesigner_toolwindow.h"
 #include "qdesigner_settings.h"
 #include "qdesigner_workbench.h"
+#include "flexview_properties.h"
+#include "qdesigner_actions.h"
 
 #include <QtDesigner/QDesignerPropertyEditorInterface>
 #include <QtDesigner/QDesignerFormEditorInterface>
@@ -163,6 +165,8 @@ QRect QDesignerToolWindow::availableToolWindowGeometry() const
     return m_workbench->availableGeometry();
 }
 
+
+
 //  ---------------------- PropertyEditorToolWindow
 
 static inline QWidget *createPropertyEditor(QDesignerFormEditorInterface *core, QWidget *parent = 0)
@@ -219,6 +223,51 @@ void PropertyEditorToolWindow::showEvent(QShowEvent *event)
 
     QDesignerToolWindow::showEvent(event);
 }
+// -----------------------Flex View Properties Editor Tool Window
+
+static inline QWidget *flexviewPropertyEditor(QDesignerFormEditorInterface *core, QWidget *parent = 0)
+{
+      flexview_properties *flexwidget = new flexview_properties;
+
+    return flexwidget;
+}
+
+class FlexviewEditorToolWindow: public QDesignerToolWindow
+{
+public:
+    explicit FlexviewEditorToolWindow(QDesignerWorkbench *workbench);
+
+    virtual QRect geometryHint() const;
+};
+
+
+FlexviewEditorToolWindow::FlexviewEditorToolWindow(QDesignerWorkbench *workbench) :
+    QDesignerToolWindow(workbench,
+                        flexviewPropertyEditor(workbench->core()),
+                        QStringLiteral("qt_designer_actioneditor"),
+                        QDesignerToolWindow::tr("Flexview Properties Editor"),
+                        QStringLiteral("__qt_action_editor_tool_action"),
+                        Qt::RightDockWidgetArea)
+{
+
+}
+
+QRect FlexviewEditorToolWindow::geometryHint() const
+{
+
+    const QRect g = availableToolWindowGeometry();
+    const int margin = workbench()->marginHint();
+
+    const QSize sz(g.width() * 1/4, g.height() * 1/6);
+
+    const QRect rc = QRect((g.right() + 1 - sz.width() - margin),
+                            g.top() + margin,
+                            sz.width(), sz.height());
+    if (debugToolWindow)
+        qDebug() << Q_FUNC_INFO << rc;
+    return rc;
+}
+
 
 //  ---------------------- ActionEditorToolWindow
 
@@ -245,6 +294,7 @@ ActionEditorToolWindow::ActionEditorToolWindow(QDesignerWorkbench *workbench) :
                         QStringLiteral("__qt_action_editor_tool_action"),
                         Qt::RightDockWidgetArea)
 {
+
 }
 
 QRect ActionEditorToolWindow::geometryHint() const
@@ -263,7 +313,7 @@ QRect ActionEditorToolWindow::geometryHint() const
 }
 
 //  ---------------------- ObjectInspectorToolWindow
-
+/*
 static inline QWidget *createObjectInspector(QDesignerFormEditorInterface *core, QWidget *parent = 0)
 {
     QDesignerObjectInspectorInterface *widget = QDesignerComponents::createObjectInspector(core, parent);
@@ -303,9 +353,9 @@ QRect ObjectInspectorToolWindow::geometryHint() const
         qDebug() << Q_FUNC_INFO << rc;
     return rc;
 }
-
+*/
 //  ---------------------- ResourceEditorToolWindow
-
+/*
 class ResourceEditorToolWindow: public QDesignerToolWindow
 {
 public:
@@ -337,9 +387,9 @@ QRect ResourceEditorToolWindow::geometryHint() const
         qDebug() << Q_FUNC_INFO << r;
     return r;
 }
-
+*/
 //  ---------------------- SignalSlotEditorToolWindow
-
+/*
 class SignalSlotEditorToolWindow: public QDesignerToolWindow
 {
 public:
@@ -371,7 +421,7 @@ QRect SignalSlotEditorToolWindow::geometryHint() const
         qDebug() << Q_FUNC_INFO << r;
     return r;
 }
-
+*/
 //  ---------------------- WidgetBoxToolWindow
 
 static inline QWidget *createWidgetBox(QDesignerFormEditorInterface *core, QWidget *parent = 0)
@@ -418,16 +468,21 @@ QDesignerToolWindow *QDesignerToolWindow::createStandardToolWindow(StandardToolW
     switch (which) {
     case ActionEditor:
         return new ActionEditorToolWindow(workbench);
-    case ResourceEditor:
-        return new ResourceEditorToolWindow(workbench);
-    case SignalSlotEditor:
-        return new SignalSlotEditorToolWindow(workbench);
+
     case PropertyEditor:
         return new PropertyEditorToolWindow(workbench);
-    case ObjectInspector:
-        return new ObjectInspectorToolWindow(workbench);
     case WidgetBox:
         return new WidgetBoxToolWindow(workbench);
+/*
+  case ResourceEditor:
+      return new ResourceEditorToolWindow(workbench);
+  case SignalSlotEditor:
+   return new SignalSlotEditorToolWindow(workbench);
+  case ObjectInspector:
+  return new ObjectInspectorToolWindow(workbench);
+  */
+    case FlexviewEditor:
+        return new FlexviewEditorToolWindow(workbench);
     default:
         break;
     }

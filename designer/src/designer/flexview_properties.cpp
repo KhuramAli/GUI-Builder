@@ -1,13 +1,13 @@
 #include "flexview_properties.h"
 #include <QLabel>
-#include <QLineEdit>
-#include <QTextEdit>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QStringList>
+
+QHash<QString, QString> flexview_properties::formPro;
 
 
 flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
@@ -33,10 +33,18 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     outputComboBox->addItem("context");
     outputComboBox->addItem("refresh");
 
-    okButton = new QPushButton (tr("Create Wddx Packets"));
 
+    addButton = new QPushButton (tr("add"));
+    loadButton = new QPushButton(tr("load"));
 
-    connect(okButton, SIGNAL(clicked()),this, SLOT (submit()));
+    //connect(okButton, SIGNAL(clicked()),this, SLOT (submit()));
+   /* connect(commentLineEdit,SIGNAL(textChanged()),this,SLOT(submit()));
+    connect(msgLineEdit,SIGNAL(textChanged(QString)),this,SLOT(submit()));
+    connect (outputComboBox, SIGNAL(currentIndexChanged(int)),this,SLOT(submit()));
+    connect (validationCheckBox, SIGNAL(clicked()), this,SLOT(submit()));*/
+
+    connect(addButton, SIGNAL(clicked()),this,SLOT(submit()));
+    connect(loadButton,SIGNAL(clicked()),this,SLOT(updatePro()));
 
     QHBoxLayout *hbox1 = new QHBoxLayout;
     hbox1->addWidget(msgLabel);
@@ -50,35 +58,57 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     hbox3->addWidget(outputLabel);
     hbox3->addWidget(outputComboBox);
 
+    QHBoxLayout *hbox4 = new QHBoxLayout;
+    hbox4->addWidget(addButton);
+    hbox4->addWidget(loadButton);
+
     QVBoxLayout *layout = new QVBoxLayout;
+
     layout->addLayout(hbox1);
     layout->addLayout(hbox2);
     layout->addLayout(hbox3);
     layout->addWidget(validationCheckBox);
-    layout->addSpacing(2);
-    layout->addWidget(okButton);
+    layout->addLayout(hbox4);
+    //layout->addSpacing(2);
+   // layout->addWidget(okButton);
     setLayout(layout);
 
+
     setWindowTitle(tr("FlexView Properties"));
-    setFixedHeight(250);
-    setFixedWidth(300);
+    //set(sizeHint().height());
+
 }
 
 void flexview_properties::submit()
 {
-    flexviewproperties << msgLineEdit->text() << commentLineEdit->toPlainText() << outputComboBox->currentText();
+
+    formPro.insert("comment",commentLineEdit->toPlainText());
+    formPro.insert("msg", msgLineEdit->text());
+    formPro.insert("output", outputComboBox->currentText());
 
     if (validationCheckBox->isChecked())
     {
-        flexviewproperties << "true";
+        formPro.insert("checkBox","true");
     }else{
-        flexviewproperties << "false";
+        formPro.insert("checkBox", "false");
     }
 
-    close();
 }
 
-QStringList flexview_properties::flexProList()
+
+void flexview_properties::updatePro()
 {
-    return flexviewproperties;
-}
+    msgLineEdit->setText(formPro.value("msg"));
+    commentLineEdit->setText(formPro.value("comment"));
+    outputComboBox->setCurrentText(formPro.value("output"));
+
+    if (formPro.value("checkBox") == "false")
+    {
+        validationCheckBox->setChecked(false);
+    }else{
+        validationCheckBox->setChecked(true);
+    }
+ }
+
+
+

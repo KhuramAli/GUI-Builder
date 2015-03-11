@@ -158,8 +158,8 @@ Makefile: ../designer/GUI_Builder.pro ../.qmake.conf C:/Qt/Qt5.3.2/5.3/mingw482_
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/default_pre.prf \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/win32/default_pre.prf \
-		H:/GitHub/Repository/GUI-Builder/shared/fontpanel/fontpanel.pri \
-		H:/GitHub/Repository/GUI-Builder/shared/qttoolbardialog/qttoolbardialog.pri \
+		I:/GitHub/Repository/GUI-Builder/shared/fontpanel/fontpanel.pri \
+		I:/GitHub/Repository/GUI-Builder/shared/qttoolbardialog/qttoolbardialog.pri \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/qt_build_paths.prf \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/qt_targets.prf \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/features/qt_common.prf \
@@ -294,8 +294,8 @@ C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\qt_build_config.prf:
 C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\exclusive_builds.prf:
 C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\default_pre.prf:
 C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\win32\default_pre.prf:
-H:\GitHub\Repository\GUI-Builder\shared\fontpanel\fontpanel.pri:
-H:\GitHub\Repository\GUI-Builder\shared\qttoolbardialog\qttoolbardialog.pri:
+I:\GitHub\Repository\GUI-Builder\shared\fontpanel\fontpanel.pri:
+I:\GitHub\Repository\GUI-Builder\shared\qttoolbardialog\qttoolbardialog.pri:
 C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\qt_build_paths.prf:
 C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\qt_targets.prf:
 C:\Qt\Qt5.3.2\5.3\mingw482_32\mkspecs\features\qt_common.prf:
