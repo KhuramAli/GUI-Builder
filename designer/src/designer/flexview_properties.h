@@ -32,9 +32,7 @@ private:
     QLabel      *msgLabel;
     QLabel      *commentLabel;
     QLabel      *outputLabel;
-    QLabel      *pathLabel;
     QLineEdit   *msgLineEdit;
-    QLineEdit   *pathLineEdit;
     QTextEdit   *commentLineEdit;
     QCheckBox   *validationCheckBox;
     QComboBox   *outputComboBox;

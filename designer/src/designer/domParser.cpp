@@ -201,6 +201,26 @@ void domParser::widget(QDomElement parentElement, QString att, widgetStruct * fl
                         flexWidget->help = childNode.toElement().text();
                     }
 
+                    if (childNode.toElement().tagName() == _property && childNode.toElement().attribute("stdset") == "0")
+                    {
+                        flexWidget->dynamicProperty.insert(childNode.toElement().attribute(_name), childNode.toElement().text());
+                    }
+
+                    if (childNode.toElement().tagName() == _property && childNode.toElement().attribute(_name) == "editable")
+                    {
+                        flexWidget->editable = childNode.toElement().text();
+                    }
+
+                    if (childNode.toElement().tagName() == _property && childNode.toElement().attribute(_name) == "minimumContentsLength")
+                    {
+                        flexWidget->minimumLength = childNode.toElement().text();
+                    }
+
+                    if (childNode.toElement().tagName() == _property && childNode.toElement().attribute(_name) == "currentText")
+                    {
+                        flexWidget->value = childNode.toElement().text();
+                    }
+
                     if (childNode.toElement().tagName() == _property && childNode.toElement().attribute(_name) == _text)
                     {
                         flexWidget->title = childNode.toElement().text();
@@ -330,11 +350,8 @@ void domParser::writeFile(widgetStruct *newWidget)
             uiWriter.writeTextElement("string", "false");
             uiWriter.writeEndElement();
              }
-        uiWriter.writeStartElement("var");
-        uiWriter.writeAttribute("name","path");
-        uiWriter.writeTextElement("string",flexview_properties::formPro.value("path"));
-        uiWriter.writeEndElement();
     }
+
 
 //incase of Push Button.
     if (newWidget->widgetName == _QPbutton)
@@ -372,6 +389,44 @@ void domParser::writeFile(widgetStruct *newWidget)
         uiWriter.writeEndElement();
     }//if condition for checking push button.
 
+    //incase of combobox.
+    if (newWidget->widgetName == _QCombo)
+    {
+        if (newWidget->editable == "true")
+        {
+            uiWriter.writeStartElement("var");
+            uiWriter.writeAttribute("name","allowManual");
+            uiWriter.writeTextElement("string", "1");
+            uiWriter.writeEndElement();
+         }else{
+            uiWriter.writeStartElement("var");
+            uiWriter.writeAttribute("name","allowManual");
+            uiWriter.writeTextElement("string", "0");
+            uiWriter.writeEndElement();
+        }
+
+        uiWriter.writeStartElement("var");
+        uiWriter.writeAttribute("name","value");
+        uiWriter.writeTextElement("string", newWidget->value);
+        uiWriter.writeEndElement();
+
+        if (newWidget->minimumLength == "0")
+        {
+            uiWriter.writeStartElement("var");
+            uiWriter.writeAttribute("name","addEmpty");
+            uiWriter.writeTextElement("string", "1");
+            uiWriter.writeEndElement();
+        }
+
+        if (newWidget->minimumLength == "1")
+        {
+            uiWriter.writeStartElement("var");
+            uiWriter.writeAttribute("name","addEmpty");
+            uiWriter.writeTextElement("string", "0");
+            uiWriter.writeEndElement();
+        }
+
+    }
     //incase of layout
     if (newWidget->widgetName == _QWidget)
     {
@@ -400,7 +455,30 @@ void domParser::writeFile(widgetStruct *newWidget)
         uiWriter.writeTextElement("string", action);
         uiWriter.writeEndElement();
     }
+//dynamic properties.
+for (i = newWidget->dynamicProperty.begin(); i != newWidget->dynamicProperty.end(); ++i)
+{
+    if (i.value() =="true")
+    {
+        uiWriter.writeStartElement("var");
+        uiWriter.writeAttribute("name",i.key());
+        uiWriter.writeTextElement("string", "1");
+        uiWriter.writeEndElement();
+    }
 
+    if (i.value() =="false")
+    {
+        uiWriter.writeStartElement("var");
+        uiWriter.writeAttribute("name",i.key());
+        uiWriter.writeTextElement("string", "0");
+        uiWriter.writeEndElement();
+    }else{
+        uiWriter.writeStartElement("var");
+        uiWriter.writeAttribute("name",i.key());
+        uiWriter.writeTextElement("string", i.value());
+        uiWriter.writeEndElement();
+    }
+}
 
     closingDefault();
     uiWriter.writeEndDocument();
@@ -487,7 +565,7 @@ QByteArray domParser::writeFlexview(QDomDocument doc)
     QDomText c = doc.createTextNode(flexview_properties::formPro.value("comment"));
     comment.appendChild(c);
 
-    QDomElement update = doc.createElement("update");
+    QDomElement update = doc.createElement("output");
     properties.appendChild(update);
     QDomText u = doc.createTextNode(flexview_properties::formPro.value("output"));
     update.appendChild(u);
@@ -497,10 +575,6 @@ QByteArray domParser::writeFlexview(QDomDocument doc)
     QDomText cb = doc.createTextNode(flexview_properties::formPro.value("checkBox"));
     checkBox.appendChild(cb);
 
-    QDomElement path = doc.createElement("path");
-    properties.appendChild(path);
-    QDomText pt = doc.createTextNode(flexview_properties::formPro.value("path"));
-    checkBox.appendChild(pt);
 
     return doc.toByteArray();
 }

@@ -31,6 +31,10 @@ private:
         QString help;
         QString action;
         QString geometry;
+        QString editable;
+        QString value;
+        QString minimumLength;
+        QHash <QString, QString> dynamicProperty;
     };
 
     QDir dir;
@@ -38,6 +42,7 @@ private:
     QHash <QString, QString>runAction;
     QVector <widgetStruct*> list;
     QStringList flexProList;
+    QHash<QString,QString>::const_iterator i;
 
     void parseElement(QDomElement root, QString tag);
     void widget(QDomElement parentElement, QString att, widgetStruct * flexWidget);

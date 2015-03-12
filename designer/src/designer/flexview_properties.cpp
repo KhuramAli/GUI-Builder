@@ -21,10 +21,6 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     commentLineEdit->setAcceptRichText(false);
     commentLabel->setBuddy(commentLineEdit);
 
-    pathLabel       = new QLabel(tr("CheckBox Path variable"));
-    pathLineEdit    = new QLineEdit;
-    pathLabel->setBuddy(pathLineEdit);
-
     validationCheckBox = new QCheckBox (tr("Form Validation"));
     validationCheckBox->setChecked(true);
 
@@ -59,12 +55,8 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     hbox2->addWidget(commentLineEdit);
 
     QHBoxLayout *hbox3 = new QHBoxLayout;
-    hbox3->addWidget(pathLabel);
-    hbox3->addWidget(pathLineEdit);
-
-    QHBoxLayout *hbox4 = new QHBoxLayout;
-    hbox4->addWidget(outputLabel);
-    hbox4->addWidget(outputComboBox);
+    hbox3->addWidget(outputLabel);
+    hbox3->addWidget(outputComboBox);
 
     QHBoxLayout *hbox = new QHBoxLayout;
     hbox->addWidget(addButton);
@@ -75,7 +67,6 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     layout->addLayout(hbox1);
     layout->addLayout(hbox2);
     layout->addLayout(hbox3);
-    layout->addLayout(hbox4);
     layout->addWidget(validationCheckBox);
     layout->addLayout(hbox);
     //layout->addSpacing(2);
@@ -94,7 +85,6 @@ void flexview_properties::submit()
     formPro.insert("comment",commentLineEdit->toPlainText());
     formPro.insert("msg", msgLineEdit->text());
     formPro.insert("output", outputComboBox->currentText());
-    formPro.insert("path",pathLineEdit->text());
 
     if (validationCheckBox->isChecked())
     {
@@ -111,13 +101,14 @@ void flexview_properties::updatePro()
     msgLineEdit->setText(formPro.value("msg"));
     commentLineEdit->setText(formPro.value("comment"));
     outputComboBox->setCurrentText(formPro.value("output"));
-    pathLineEdit->setText(formPro.value("path"));
+
     if (formPro.value("checkBox") == "false")
     {
         validationCheckBox->setChecked(false);
     }else{
         validationCheckBox->setChecked(true);
     }
+
  }
 
 
