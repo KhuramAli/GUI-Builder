@@ -102,7 +102,7 @@ void flexview_properties::updatePro()
     msgLineEdit->setText(formPro.value("msg"));
     commentLineEdit->setText(formPro.value("comment"));
     outputComboBox->setCurrentText(formPro.value("output"));
-
+qDebug () << formPro.value("output");
     if (formPro.value("checkBox") == "false")
     {
         validationCheckBox->setChecked(false);
@@ -112,5 +112,13 @@ void flexview_properties::updatePro()
 
  }
 
+void flexview_properties::clear()
+{
+    msgLineEdit->clear();
+    commentLineEdit->clear();
+    outputComboBox->setCurrentIndex(0);
+    validationCheckBox->setChecked(true);
 
+    formPro.clear();
+}
 

@@ -25,6 +25,7 @@ public:
     flexview_properties(QWidget *parent = 0);
     void updatePro ();
     void submit ();
+    void clear();
 
 private slots:
 

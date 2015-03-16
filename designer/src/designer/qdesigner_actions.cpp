@@ -690,6 +690,7 @@ bool QDesignerActions::saveForm(QDesignerFormWindowInterface *fw)
 
 void QDesignerActions::closeForm()
 {
+    DockedMainWindow::flex->clear();
     if (m_previewManager->previewCount()) {
         closePreview();
         return;
@@ -703,6 +704,7 @@ void QDesignerActions::closeForm()
                 parent->close();
             }
         }
+
 }
 
 void QDesignerActions::saveFormAs()
@@ -1500,9 +1502,9 @@ void QDesignerActions::loadFlexviewPro(QString file)
                     flexview_properties::formPro.insert("comment",  parentElement.text());
                 }
 
-                if (parentElement.tagName() == "update")
+                if (parentElement.tagName() == "output")
                 {
-                    flexview_properties::formPro.insert("update", parentElement.text());
+                    flexview_properties::formPro.insert("output", parentElement.text());
                 }
 
                 if (parentElement.tagName() == "checkBox")
