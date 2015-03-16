@@ -654,6 +654,21 @@ compiler_moc_header_clean:
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
@@ -925,17 +940,57 @@ compiler_moc_header_clean:
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QObject \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qprinter.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagedpaintdevice.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpaintdevice.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagelayout.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagesize.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
@@ -1105,6 +1160,21 @@ compiler_moc_header_clean:
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
@@ -1802,6 +1872,21 @@ compiler_moc_header_clean:
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		../designer/mainwindow.h
 	C:\Qt\Qt5.3.2\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++ -II:/GitHub/Repository/GUI-Builder/designer/src/designer -II:/GitHub/Repository/GUI-Builder/designer/src/lib/sdk -II:/GitHub/Repository/GUI-Builder/designer/src/lib/extension -II:/GitHub/Repository/GUI-Builder/designer/src/lib/shared -II:/GitHub/Repository/GUI-Builder/designer/src/designer/extra -II:/GitHub/Repository/GUI-Builder/shared/fontpanel -II:/GitHub/Repository/GUI-Builder/shared/qttoolbardialog -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesignerComponents -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesignerComponents/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesignerComponents/5.3.2/QtDesignerComponents -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/5.3.2/QtDesigner -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/5.3.2/QtWidgets -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/5.3.2/QtGui -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtNetwork -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtXml -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/5.3.2/QtCore -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore -I. ..\designer\mainwindow.h -o .moc\debug\moc_mainwindow.cpp
 
@@ -1906,6 +1991,20 @@ compiler_moc_header_clean:
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		../designer/flexview_properties.h
 	C:\Qt\Qt5.3.2\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/mkspecs/win32-g++ -II:/GitHub/Repository/GUI-Builder/designer/src/designer -II:/GitHub/Repository/GUI-Builder/designer/src/lib/sdk -II:/GitHub/Repository/GUI-Builder/designer/src/lib/extension -II:/GitHub/Repository/GUI-Builder/designer/src/lib/shared -II:/GitHub/Repository/GUI-Builder/designer/src/designer/extra -II:/GitHub/Repository/GUI-Builder/shared/fontpanel -II:/GitHub/Repository/GUI-Builder/shared/qttoolbardialog -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesignerComponents -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesignerComponents/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesignerComponents/5.3.2/QtDesignerComponents -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/5.3.2/QtDesigner -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/5.3.2/QtWidgets -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/5.3.2/QtGui -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtNetwork -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtXml -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/5.3.2 -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/5.3.2/QtCore -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui -IC:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore -I. ..\designer\flexview_properties.h -o .moc\debug\moc_flexview_properties.cpp
 
@@ -2515,10 +2614,23 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMdiArea \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontdatabase.h \
 		../designer/qdesigner_workbench.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QSet
 	@if not exist .pch\debug\qdesigner_pch.h.gch mkdir .pch\debug\qdesigner_pch.h.gch & if not exist .pch\debug\qdesigner_pch.h.gch exit 1
 	$(CC) -x c-header -c $(CFLAGS) $(INCPATH) -o .pch\debug\qdesigner_pch.h.gch\c ..\designer\qdesigner_pch.h
@@ -2686,10 +2798,23 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMdiArea \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontdatabase.h \
 		../designer/qdesigner_workbench.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QSet
 	@if not exist .pch\debug\qdesigner_pch.h.gch mkdir .pch\debug\qdesigner_pch.h.gch & if not exist .pch\debug\qdesigner_pch.h.gch exit 1
 	$(CXX) -x c++-header -c $(CXXFLAGS) $(INCPATH) -o .pch\debug\qdesigner_pch.h.gch\c++ ..\designer\qdesigner_pch.h
@@ -3264,6 +3389,22 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QObject \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qprinter.h \
@@ -3281,8 +3422,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qicon.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMdiArea \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
 		../lib/shared/qdesigner_propertysheet_p.h \
 		../lib/sdk/dynamicpropertysheet.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/extension.h \
@@ -3296,7 +3435,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QIcon \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QErrorMessage \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qerrormessage.h \
@@ -3437,6 +3575,21 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontdatabase.h \
 		../designer/qdesigner_settings.h \
@@ -3452,11 +3605,26 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QVariant \
 		../designer/qdesigner_workbench.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QObject \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QSet \
-		../designer/flexview_properties.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		../designer/qdesigner_actions.h \
+		../designer/assistantclient.h \
+		../designer/domParser.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtXml/QDomDocument \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtXml/qdom.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtXml/qtxmlglobal.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QXmlStreamWriter \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qxmlstream.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QFile \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QVector \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qprinter.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagedpaintdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagelayout.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagesize.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/QDesignerPropertyEditorInterface \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/abstractpropertyeditor.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/sdk_global.h \
@@ -3781,6 +3949,22 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qprinter.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagedpaintdevice.h \
@@ -3796,8 +3980,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qicon.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMdiArea \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontdatabase.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/QDesignerOptionsPageInterface \
@@ -3808,8 +3990,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		../designer/appfontdialog.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QGroupBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qgroupbox.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/QDesignerFormEditorInterface \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/abstractformeditor.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/QDesignerFormWindowInterface \
@@ -3854,8 +4034,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qaction.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDesktopWidget \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMenu \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmenu.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMenuBar \
@@ -4008,11 +4186,25 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontdatabase.h \
 		../designer/qdesigner_workbench.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QObject \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QSet \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/QDesignerSettingsInterface \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/abstractsettings.h \
@@ -4268,28 +4460,13 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QObject \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qprinter.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagedpaintdevice.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpaintdevice.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagelayout.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagesize.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
-		../designer/qdesigner.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qcursor.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpaintdevice.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpalette.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qcolor.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qrgb.h \
@@ -4302,16 +4479,47 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpainterpath.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qimage.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfont.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontmetrics.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontinfo.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qcursor.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qkeysequence.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qevent.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qurl.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qurlquery.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QObject \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qprinter.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagedpaintdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagelayout.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpagesize.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		../designer/qdesigner.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QApplication \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qapplication.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qguiapplication.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qinputmethod.h \
 		../designer/qdesigner_workbench.h \
@@ -4319,8 +4527,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		../designer/qdesigner_formwindow.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QWidget \
 		../designer/newform.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
 		../designer/versiondialog.h \
 		../designer/saveformastemplate.h \
 		.uic/ui_saveformastemplate.h \
@@ -4343,7 +4549,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialogButtonBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialogbuttonbox.h \
@@ -4358,16 +4563,9 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QHeaderView \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLabel \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QVBoxLayout \
 		../designer/qdesigner_toolwindow.h \
 		../designer/mainwindow.h \
@@ -4381,6 +4579,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		../designer/appfontdialog.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QGroupBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qgroupbox.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QXmlStreamReader \
 		../lib/shared/pluginmanager_p.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/5.3.2/QtDesigner/private/shared_enums_p.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPair \
@@ -4581,6 +4780,21 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
@@ -4967,6 +5181,20 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtPrintSupport/QPrinter \
@@ -5014,7 +5242,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QCheckBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qcheckbox.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QFrame \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
 		.pch/debug/qdesigner_pch.h.gch/c++
@@ -5476,6 +5703,19 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QList \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMdiArea \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
@@ -5694,6 +5934,21 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		../designer/flexview_properties.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		../designer/qdesigner.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
@@ -5725,7 +5980,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QFile \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QVector \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDir \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qdir.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfileinfo.h \
@@ -5744,8 +5998,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qfontdatabase.h \
 		I:/GitHub/Repository/GUI-Builder/shared/qttoolbardialog/qttoolbardialog.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/QDesignerFormWindowInterface \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/abstractformwindow.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtDesigner/sdk_global.h \
@@ -5766,8 +6018,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QUrl \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QDebug \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QMimeData \
@@ -5890,6 +6140,19 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qurlquery.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QTextEdit \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
 		../designer/qdesigner_toolwindow.h \
 		../designer/mainwindow.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMainWindow \
@@ -5899,8 +6162,6 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QList \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QMdiArea \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qmdiarea.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QPointer \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qpointer.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/QFontDatabase \
@@ -6012,11 +6273,10 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtCore/QHash \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLineEdit \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextcursor.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextformat.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qpen.h \
@@ -6025,6 +6285,10 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_moc_source
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qtextedit.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtGui/qtextdocument.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QDockWidget \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qdockwidget.h \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QLabel \
+		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/QCheckBox \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qcheckbox.h \
 		C:/Qt/Qt5.3.2/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \

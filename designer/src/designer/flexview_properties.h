@@ -5,7 +5,7 @@
 #include <QHash>
 #include <QLineEdit>
 #include <QTextEdit>
-
+#include <QDockWidget>
 
 class QCheckBox;
 class QLabel;
@@ -23,10 +23,12 @@ class flexview_properties : public QDialog
 
 public:
     flexview_properties(QWidget *parent = 0);
+    void updatePro ();
+    void submit ();
 
 private slots:
-    void submit ();
-    void updatePro ();
+
+
 
 private:
     QLabel      *msgLabel;
@@ -36,8 +38,8 @@ private:
     QTextEdit   *commentLineEdit;
     QCheckBox   *validationCheckBox;
     QComboBox   *outputComboBox;
-    QPushButton *addButton;
-    QPushButton *loadButton;
+    //QPushButton *addButton;
+    //QPushButton *loadButton;
 
 static QHash<QString,QString> formPro;
 

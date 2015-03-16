@@ -46,6 +46,7 @@
 #include "flexview_properties.h"
 #include "qdesigner_actions.h"
 
+
 #include <QtDesigner/QDesignerPropertyEditorInterface>
 #include <QtDesigner/QDesignerFormEditorInterface>
 #include <QtDesigner/QDesignerActionEditorInterface>
@@ -223,14 +224,10 @@ void PropertyEditorToolWindow::showEvent(QShowEvent *event)
 
     QDesignerToolWindow::showEvent(event);
 }
+
 // -----------------------Flex View Properties Editor Tool Window
 
-static inline QWidget *flexviewPropertyEditor(QDesignerFormEditorInterface *core, QWidget *parent = 0)
-{
-      flexview_properties *flexwidget = new flexview_properties;
 
-    return flexwidget;
-}
 
 class FlexviewEditorToolWindow: public QDesignerToolWindow
 {
@@ -243,7 +240,7 @@ public:
 
 FlexviewEditorToolWindow::FlexviewEditorToolWindow(QDesignerWorkbench *workbench) :
     QDesignerToolWindow(workbench,
-                        flexviewPropertyEditor(workbench->core()),
+                        DockedMainWindow::flexviewPropertyEditor(workbench->core()),
                         QStringLiteral("qt_designer_actioneditor"),
                         QDesignerToolWindow::tr("Flexview Properties Editor"),
                         QStringLiteral("__qt_action_editor_tool_action"),
@@ -480,9 +477,10 @@ QDesignerToolWindow *QDesignerToolWindow::createStandardToolWindow(StandardToolW
    return new SignalSlotEditorToolWindow(workbench);
   case ObjectInspector:
   return new ObjectInspectorToolWindow(workbench);
-  */
+*/
     case FlexviewEditor:
         return new FlexviewEditorToolWindow(workbench);
+
     default:
         break;
     }

@@ -64,7 +64,7 @@
 #include <QtCore/QMimeData>
 
 static const char *uriListMimeFormatC = "text/uri-list";
-
+flexview_properties * DockedMainWindow::flex;
 QT_BEGIN_NAMESPACE
 
 typedef QList<QAction *> ActionList;
@@ -379,6 +379,7 @@ QMdiSubWindow *DockedMainWindow::createMdiSubWindow(QWidget *fw, Qt::WindowFlags
 
 DockedMainWindow::DockWidgetList DockedMainWindow::addToolWindows(const DesignerToolWindowList &tls)
 {
+
     DockWidgetList rc;
     foreach (QDesignerToolWindow *tw, tls) {
         QDockWidget *dockWidget = new QDockWidget;
@@ -388,8 +389,11 @@ DockedMainWindow::DockWidgetList DockedMainWindow::addToolWindows(const Designer
         dockWidget->setWidget(tw);
         rc.push_back(dockWidget);
     }
+
+    //rc.push_back(flex);
     return rc;
 }
+
 
 // Settings consist of MainWindow state and tool bar manager state
 void DockedMainWindow::restoreSettings(const QDesignerSettings &s, const DockWidgetList &dws, const QRect &desktopArea)
@@ -404,10 +408,12 @@ void DockedMainWindow::restoreSettings(const QDesignerSettings &s, const DockWid
     const bool restored = !mainWindowState.isEmpty() && restoreState(mainWindowState, version);
     if (!restored) {
         // Default: Tabify less relevant windows bottom/right.
-        tabifyDockWidget(dws.at(QDesignerToolWindow::FlexviewEditor),
+
+       tabifyDockWidget(dws.at(QDesignerToolWindow::FlexviewEditor),
                          dws.at(QDesignerToolWindow::ActionEditor));
+
        // tabifyDockWidget(dws.at(QDesignerToolWindow::ActionEditor),
-                         //dws.at(QDesignerToolWindow::ResourceEditor));
+                  //dws.at(QDesignerToolWindow::ResourceEditor));
     }
 }
 

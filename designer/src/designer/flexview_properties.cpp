@@ -34,8 +34,8 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     outputComboBox->addItem("refresh");
 
 
-    addButton = new QPushButton (tr("add"));
-    loadButton = new QPushButton(tr("load"));
+   // addButton = new QPushButton (tr("add"));
+    //loadButton = new QPushButton(tr("load"));
 
     //connect(okButton, SIGNAL(clicked()),this, SLOT (submit()));
    /* connect(commentLineEdit,SIGNAL(textChanged()),this,SLOT(submit()));
@@ -43,8 +43,8 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     connect (outputComboBox, SIGNAL(currentIndexChanged(int)),this,SLOT(submit()));
     connect (validationCheckBox, SIGNAL(clicked()), this,SLOT(submit()));*/
 
-    connect(addButton, SIGNAL(clicked()),this,SLOT(submit()));
-    connect(loadButton,SIGNAL(clicked()),this,SLOT(updatePro()));
+   // connect(addButton, SIGNAL(clicked()),this,SLOT(submit()));
+    //connect(loadButton,SIGNAL(clicked()),this,SLOT(updatePro()));
 
     QHBoxLayout *hbox1 = new QHBoxLayout;
     hbox1->addWidget(msgLabel);
@@ -57,20 +57,21 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     QHBoxLayout *hbox3 = new QHBoxLayout;
     hbox3->addWidget(outputLabel);
     hbox3->addWidget(outputComboBox);
-
+/*
     QHBoxLayout *hbox = new QHBoxLayout;
     hbox->addWidget(addButton);
     hbox->addWidget(loadButton);
-
+*/
     QVBoxLayout *layout = new QVBoxLayout;
 
     layout->addLayout(hbox1);
     layout->addLayout(hbox2);
     layout->addLayout(hbox3);
     layout->addWidget(validationCheckBox);
-    layout->addLayout(hbox);
+  //  layout->addLayout(hbox);
     //layout->addSpacing(2);
    // layout->addWidget(okButton);
+
     setLayout(layout);
 
 

@@ -45,6 +45,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtCore/QList>
 #include <QtWidgets/QMdiArea>
+#include "flexview_properties.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -171,6 +172,13 @@ public:
     void restoreSettings(const QDesignerSettings &s, const DockWidgetList &dws, const QRect &desktopArea);
     void saveSettings(QDesignerSettings &) const;
 
+    static flexview_properties * flex;
+
+    static inline QWidget *flexviewPropertyEditor(QDesignerFormEditorInterface *core =0, QWidget *parent = 0)
+    {
+    DockedMainWindow::flex = new flexview_properties ;
+       return flex;
+    }
 signals:
     void fileDropped(const QString &);
     void formWindowActivated(QDesignerFormWindow *);
@@ -180,6 +188,7 @@ private slots:
 
 private:
     ToolBarManager *m_toolBarManager;
+
 };
 
 QT_END_NAMESPACE

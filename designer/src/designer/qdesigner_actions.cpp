@@ -940,8 +940,10 @@ bool QDesignerActions::writeOutForm(QDesignerFormWindowInterface *fw, const QStr
     f.close();
 
     //writting wddx packet file.
+    DockedMainWindow::flex->submit();
     f.open(QFile::ReadOnly);
     xml.writeWddx(&f,saveFile);
+
     f.close();
 
     removeBackup(backupFile);
@@ -1509,6 +1511,7 @@ void QDesignerActions::loadFlexviewPro(QString file)
                 }
             }
 }
+DockedMainWindow::flex->updatePro();
 
 }
 
