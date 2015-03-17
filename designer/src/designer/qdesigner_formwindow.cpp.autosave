@@ -284,7 +284,6 @@ void QDesignerFormWindow::geometryChanged()
     static const QString geometryProperty = QStringLiteral("geometry");
     const QDesignerPropertySheetExtension *sheet = qt_extension<QDesignerPropertySheetExtension*>(core->extensionManager(), object);
     const int geometryIndex = sheet->indexOf(geometryProperty);
-        qDebug () << "selected" << object->objectName();
     if (geometryIndex == -1)
         return;
     core->propertyEditor()->setPropertyValue(geometryProperty, sheet->property(geometryIndex));
