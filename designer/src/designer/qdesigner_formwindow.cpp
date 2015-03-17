@@ -100,6 +100,7 @@ QDesignerFormWindow::~QDesignerFormWindow()
 {
     if (workbench())
         workbench()->removeFormWindow(this);
+    DockedMainWindow::flex->clear();
 }
 
 QAction *QDesignerFormWindow::action() const
@@ -249,7 +250,7 @@ void QDesignerFormWindow::closeEvent(QCloseEvent *ev)
                 break;
         }
     }
-                DockedMainWindow::flex->clear();
+               // DockedMainWindow::flex->clear();
 }
 
 void QDesignerFormWindow::updateChanged()
