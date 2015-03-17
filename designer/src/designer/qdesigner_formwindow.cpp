@@ -42,6 +42,7 @@
 #include "qdesigner_formwindow.h"
 #include "qdesigner_workbench.h"
 #include "formwindowbase_p.h"
+#include "mainwindow.h"
 
 // sdk
 #include <QtDesigner/QDesignerFormWindowInterface>
@@ -241,12 +242,14 @@ void QDesignerFormWindow::closeEvent(QCloseEvent *ev)
             case QMessageBox::Discard:
                 m_editor->setDirty(false); // Not really necessary, but stops problems if we get close again.
                 ev->accept();
+
                 break;
             case QMessageBox::Cancel:
                 ev->ignore();
                 break;
         }
     }
+                DockedMainWindow::flex->clear();
 }
 
 void QDesignerFormWindow::updateChanged()

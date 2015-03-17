@@ -43,8 +43,8 @@ OBJECTS_DIR   = .obj\release
 
 ####### Files
 
-SOURCES       = H:\GitHub\Repository\GUI-Builder\shared\fontpanel\fontpanel.cpp \
-		H:\GitHub\Repository\GUI-Builder\shared\qttoolbardialog\qttoolbardialog.cpp \
+SOURCES       = I:\GitHub\Repository\GUI-Builder\shared\fontpanel\fontpanel.cpp \
+		I:\GitHub\Repository\GUI-Builder\shared\qttoolbardialog\qttoolbardialog.cpp \
 		..\designer\main.cpp \
 		..\designer\qdesigner.cpp \
 		..\designer\qdesigner_toolwindow.cpp \
