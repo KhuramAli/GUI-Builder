@@ -136,7 +136,7 @@ void QDesigner::showErrorMessageBox(const QString &msg)
     if (!m_errorMessageDialog) {
         m_lastErrorMessage.clear();
         m_errorMessageDialog = new QErrorMessage(m_mainWindow);
-        const QString title = QCoreApplication::translate("QDesigner", "%1 - warning").arg(QLatin1String(designerApplicationName));
+        const QString title = QCoreApplication::translate("Flexview", "%1 - warning").arg(QLatin1String(designerApplicationName));
         m_errorMessageDialog->setWindowTitle(title);
         m_errorMessageDialog->setMinimumSize(QSize(600, 250));
         m_errorMessageDialog->setWindowFlags(m_errorMessageDialog->windowFlags() & ~Qt::WindowContextHelpButtonHint);

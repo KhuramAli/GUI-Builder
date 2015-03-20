@@ -68,7 +68,7 @@
 QT_BEGIN_NAMESPACE
 
 static const char *designerApplicationName = "Flexview GUI Builder";
-static const char *designerWarningPrefix = "GUI Builder: ";
+static const char *designerWarningPrefix = "Flexview GUI Builder: ";
 static QtMessageHandler previousMessageHandler = 0;
 
 static void designerMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)

@@ -518,6 +518,7 @@ void QDesignerWorkbench::switchToTopLevelMode()
         settings.restoreGeometry(tw, tw->geometryHint());
         tw->action()->setChecked(tw->isVisible());
         found_visible_window |= tw->isVisible();
+        qDebug () << "selected";
     }
 
     if (!m_toolWindows.isEmpty() && !found_visible_window)
