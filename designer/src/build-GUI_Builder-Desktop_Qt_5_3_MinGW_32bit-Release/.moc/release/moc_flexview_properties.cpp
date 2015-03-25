@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_flexview_properties_t {
     QByteArrayData data[3];
-    char stringdata[28];
+    char stringdata[32];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,10 +30,10 @@ struct qt_meta_stringdata_flexview_properties_t {
 static const qt_meta_stringdata_flexview_properties_t qt_meta_stringdata_flexview_properties = {
     {
 QT_MOC_LITERAL(0, 0, 19),
-QT_MOC_LITERAL(1, 20, 6),
-QT_MOC_LITERAL(2, 27, 0)
+QT_MOC_LITERAL(1, 20, 10),
+QT_MOC_LITERAL(2, 31, 0)
     },
-    "flexview_properties\0submit\0"
+    "flexview_properties\0showDialog\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +64,7 @@ void flexview_properties::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         flexview_properties *_t = static_cast<flexview_properties *>(_o);
         switch (_id) {
-        case 0: _t->submit(); break;
+        case 0: _t->showDialog(); break;
         default: ;
         }
     }

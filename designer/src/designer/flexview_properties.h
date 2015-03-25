@@ -12,6 +12,8 @@ class QLabel;
 class QPushButton;
 class QStringList;
 class QComboBox;
+class QVBoxLayout;
+class QFile;
 class domParser;
 
 class flexview_properties : public QDialog
@@ -26,24 +28,34 @@ public:
     void updatePro ();
     void submit ();
     void clear();
+    void setWidgetName(QString name);
+    void addProperty(QString propertyName, QString propertyType);
 
 private slots:
-
-
+    void showDialog();
 
 private:
     QLabel      *msgLabel;
     QLabel      *commentLabel;
     QLabel      *outputLabel;
+    QLabel      *widgetname;
     QLineEdit   *msgLineEdit;
     QTextEdit   *commentLineEdit;
     QCheckBox   *validationCheckBox;
     QComboBox   *outputComboBox;
-    //QPushButton *addButton;
+    QPushButton *newProperty;
     //QPushButton *loadButton;
+
+     QVBoxLayout *layout;
+
+     QHash<QString, QString> newProperties;
 
 static QHash<QString,QString> formPro;
 
+void saveSettings (QHash<QString,QString> newProperties);
+void loadSettings ();
+
+QFile * settingFile;
 };
 
 #endif // FLEXVIEW_PROPERTIES_H

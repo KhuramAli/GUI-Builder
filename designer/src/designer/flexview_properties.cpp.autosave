@@ -1,15 +1,18 @@
 #include "flexview_properties.h"
+#include "new_property.h"
+
 #include <QLabel>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include<QGridLayout>
 #include <QStringList>
+#include<QFile>
 #include <abstractformwindow.h>
 
 QHash<QString, QString> flexview_properties::formPro;
-
 
 flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
 {
@@ -34,19 +37,22 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     outputComboBox->addItem("context");
     outputComboBox->addItem("refresh");
 
+    widgetname = new QLabel;
+   newProperty = new QPushButton (tr("add property"));
 
-   // addButton = new QPushButton (tr("add"));
-    //loadButton = new QPushButton(tr("load"));
+    connect(newProperty, SIGNAL(clicked()),this,SLOT(showDialog()));
 
-    //connect(okButton, SIGNAL(clicked()),this, SLOT (submit()));
-   /* connect(commentLineEdit,SIGNAL(textChanged()),this,SLOT(submit()));
-    connect(msgLineEdit,SIGNAL(textChanged(QString)),this,SLOT(submit()));
-    connect (outputComboBox, SIGNAL(currentIndexChanged(int)),this,SLOT(submit()));
-    connect (validationCheckBox, SIGNAL(clicked()), this,SLOT(submit()));*/
+    QGridLayout *gridLayout = new QGridLayout;
+    gridLayout->
+    gridLayout->addWidget(msgLabel);
+    gridLayout->addWidget(msgLineEdit);
+    gridLayout->addWidget(commentLabel);
+    gridLayout->addWidget(commentLineEdit);
+    gridLayout->addWidget(outputLabel);
+    gridLayout->addWidget(outputComboBox);
+    gridLayout->addWidget(validationCheckBox);
 
-   // connect(addButton, SIGNAL(clicked()),this,SLOT(submit()));
-    //connect(loadButton,SIGNAL(clicked()),this,SLOT(updatePro()));
-
+/*
     QHBoxLayout *hbox1 = new QHBoxLayout;
     hbox1->addWidget(msgLabel);
     hbox1->addWidget(msgLineEdit);
@@ -58,17 +64,11 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     QHBoxLayout *hbox3 = new QHBoxLayout;
     hbox3->addWidget(outputLabel);
     hbox3->addWidget(outputComboBox);
-/*
-    QHBoxLayout *hbox = new QHBoxLayout;
-    hbox->addWidget(addButton);
-    hbox->addWidget(loadButton);
 */
-    QVBoxLayout *layout = new QVBoxLayout;
+    layout = new QVBoxLayout;
 
-    layout->addLayout(hbox1);
-    layout->addLayout(hbox2);
-    layout->addLayout(hbox3);
-    layout->addWidget(validationCheckBox);
+    layout->addLayout(gridLayout);
+    layout->addWidget(newProperty);
   //  layout->addLayout(hbox);
     //layout->addSpacing(2);
    // layout->addWidget(okButton);
@@ -79,6 +79,13 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     setWindowTitle(tr("FlexView Properties"));
     //set(sizeHint().height());
     
+if (!settingFile->exists("settings.ini"))
+{
+    settingFile = new QFile("settings.ini");
+}else{
+    settingFile = new QFile;
+    loadSettings();
+}
 
 }
 
@@ -124,3 +131,72 @@ void flexview_properties::clear()
     formPro.clear();
 }
 
+void flexview_properties::setWidgetName(QString name)
+{
+    widgetname->setText(name);
+}
+
+void flexview_properties::addProperty(QString propertyName, QString propertyType)
+{
+    int i =0;
+    QString name = "New Property";
+    name +i;
+    QLabel * newlabel = new QLabel(tr("New Property"));
+    i++;
+    QHBoxLayout * newhbox = new QHBoxLayout;
+    newhbox->addWidget(newlabel);
+    layout->addLayout(newhbox);
+
+    newProperties.insert("QLabel", name);
+    qDebug() << name;
+    qDebug() << newProperties.size();
+    saveSettings(newProperties);
+
+}
+
+void flexview_properties::saveSettings(QHash<QString, QString> newProperties)
+{qDebug() << "in saveSettings";
+
+    settingFile->setFileName("settings.ini");
+    if(settingFile->open(QFile::WriteOnly|QFile::Append))
+    {qDebug() << "in file open";
+            settingFile->atEnd();
+            QDataStream out(settingFile);
+                   out << newProperties;
+                   //settingFile->flush();
+                   settingFile->close();
+    }
+}
+
+void flexview_properties::loadSettings()
+{
+    settingFile->setFileName("settings.ini");
+    if(settingFile->open(QFile::ReadOnly))
+    {
+        QDataStream in(settingFile);
+        while(!settingFile->atEnd())
+        {
+            in >> newProperties;
+
+        }
+    settingFile->close();
+    }
+qDebug() << newProperties.size();
+        for(int i = 0; i < newProperties.size(); ++i)
+        {
+            if (newProperties.contains("QLabel"))
+            {
+                QLabel * newlabel = new QLabel (newProperties.value("QLabel"));
+                QHBoxLayout * newhbox = new QHBoxLayout;
+                newhbox->addWidget(newlabel);
+                layout->addLayout(newhbox);
+            }
+         }
+
+}
+
+void flexview_properties::showDialog()
+{
+    new_property * PropertyDialog = new new_property;
+    PropertyDialog->show();
+}

@@ -53,6 +53,9 @@
 #include <QtDesigner/QDesignerTaskMenuExtension>
 #include <QtDesigner/QExtensionManager>
 
+#include <QtDesigner/QDesignerFormWindowManagerInterface>
+#include <QDesignerFormWindowCursorInterface>
+
 #include <QtCore/QEvent>
 #include <QtCore/QFile>
 
@@ -94,6 +97,9 @@ QDesignerFormWindow::QDesignerFormWindow(QDesignerFormWindowInterface *editor, Q
 
     connect(m_editor->commandHistory(), SIGNAL(indexChanged(int)), this, SLOT(updateChanged()));
     connect(m_editor, SIGNAL(geometryChanged()), this, SLOT(geometryChanged()));
+    connect(m_editor, SIGNAL(selectionChanged()), this, SLOT(flexProperties()));
+
+      form = m_editor;
 }
 
 QDesignerFormWindow::~QDesignerFormWindow()
@@ -129,6 +135,8 @@ void QDesignerFormWindow::changeEvent(QEvent *e)
             break;
     }
     QWidget::changeEvent(e);
+
+
 }
 
 QRect QDesignerFormWindow::geometryHint() const
@@ -287,6 +295,18 @@ void QDesignerFormWindow::geometryChanged()
     if (geometryIndex == -1)
         return;
     core->propertyEditor()->setPropertyValue(geometryProperty, sheet->property(geometryIndex));
+}
+
+void QDesignerFormWindow::flexProperties()
+{
+
+    DockedMainWindow::flex->setWidgetName(form->cursor()->current()->objectName());
+
+}
+
+QWidget * QDesignerFormWindow::getCurrentWidget()
+{
+    return form->cursor()->current();
 }
 
 QT_END_NAMESPACE

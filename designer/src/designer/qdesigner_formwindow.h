@@ -49,6 +49,7 @@ QT_BEGIN_NAMESPACE
 
 class QDesignerWorkbench;
 class QDesignerFormWindowInterface;
+class QDesignerFormWindowManagerInterface;
 
 class QDesignerFormWindow: public QWidget
 {
@@ -66,9 +67,11 @@ public:
     QDesignerFormWindowInterface *editor() const;
 
     QRect geometryHint() const;
+    QWidget * getCurrentWidget();
 
 public slots:
     void updateChanged();
+    void flexProperties();
 
 private slots:
     void updateWindowTitle(const QString &fileName);
@@ -90,6 +93,8 @@ private:
     QAction *m_action;
     bool m_initialized;
     bool m_windowTitleInitialized;
+    QDesignerFormWindowInterface * form;
+
 };
 
 QT_END_NAMESPACE
