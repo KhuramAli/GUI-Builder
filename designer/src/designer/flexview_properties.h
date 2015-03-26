@@ -28,7 +28,7 @@ public:
     void updatePro ();
     void submit ();
     void clear();
-    void setWidgetName(QString name);
+    void setWidgetName(QString widget_name, QString class_name);
     void addProperty(QString propertyName, QString propertyType);
 
 private slots:

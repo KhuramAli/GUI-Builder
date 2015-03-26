@@ -43,6 +43,8 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     connect(newProperty, SIGNAL(clicked()),this,SLOT(showDialog()));
 
     QGridLayout *gridLayout = new QGridLayout;
+
+    gridLayout->addWidget(widgetname);
     gridLayout->addWidget(msgLabel);
     gridLayout->addWidget(msgLineEdit);
     gridLayout->addWidget(commentLabel);
@@ -50,6 +52,7 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     gridLayout->addWidget(outputLabel);
     gridLayout->addWidget(outputComboBox);
     gridLayout->addWidget(validationCheckBox);
+
 
 /*
     QHBoxLayout *hbox1 = new QHBoxLayout;
@@ -130,9 +133,9 @@ void flexview_properties::clear()
     formPro.clear();
 }
 
-void flexview_properties::setWidgetName(QString name)
+void flexview_properties::setWidgetName(QString widget_name, QString class_name)
 {
-    widgetname->setText(name);
+    widgetname->setText(widget_name.append(" : ").append(class_name));
 }
 
 void flexview_properties::addProperty(QString propertyName, QString propertyType)
