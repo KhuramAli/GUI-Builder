@@ -19,7 +19,7 @@ new_property::new_property(QWidget * parent):QDialog(parent)
     type      = new QComboBox;
     typeLabel->setBuddy(type);
 
-    type->addItem("String");
+    type->addItem("string");
     type->addItem("bool");
 
     okButton = new QPushButton(tr("Add New Property"));

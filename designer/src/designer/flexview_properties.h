@@ -13,6 +13,7 @@ class QPushButton;
 class QStringList;
 class QComboBox;
 class QVBoxLayout;
+class QScrollArea;
 class QFile;
 class domParser;
 
@@ -30,6 +31,10 @@ public:
     void clear();
     void setWidgetName(QString widget_name, QString class_name);
     void addProperty(QString propertyName, QString propertyType);
+    void showProperty();
+
+    QVector <QLineEdit*> textList;
+    QVector <QCheckBox*> checkboxList;
 
 private slots:
     void showDialog();
@@ -44,9 +49,11 @@ private:
     QCheckBox   *validationCheckBox;
     QComboBox   *outputComboBox;
     QPushButton *newProperty;
-    //QPushButton *loadButton;
 
      QVBoxLayout *layout;
+     QWidget     *viewport;
+     QScrollArea *scrollArea;
+     QVBoxLayout *mainLayout;
 
      QHash<QString, QString> newProperties;
 
@@ -54,6 +61,8 @@ static QHash<QString,QString> formPro;
 
 void saveSettings (QHash<QString,QString> newProperties);
 void loadSettings ();
+
+QString className;
 
 QFile * settingFile;
 };

@@ -70,25 +70,18 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     layout->addLayout(hbox3);
     layout->addWidget(validationCheckBox);
 
-
-    //Create a widget and set its layout as your new layout created above
     viewport = new QWidget;
     viewport->setLayout(layout );
 
-    //Add the viewport to the scroll area
     scrollArea = new QScrollArea;
-
     scrollArea->setWidget(viewport);
     scrollArea->setWidgetResizable(true);
     mainLayout = new QVBoxLayout;
 
-    //Add the scroll area to your main window's layout
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
 
-
     setWindowTitle(tr("FlexView Properties"));
-    //set(sizeHint().height());
     
 if (!settingFile->exists("settings.ini"))
 {
