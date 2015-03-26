@@ -7,15 +7,17 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include<QGridLayout>
+#include <QGridLayout>
 #include <QStringList>
 #include<QFile>
 #include <abstractformwindow.h>
+#include<QScrollArea>
 
 QHash<QString, QString> flexview_properties::formPro;
 
 flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
 {
+
     msgLabel    = new QLabel(tr("Message:"));
     msgLineEdit = new QLineEdit;
     msgLabel->setBuddy(msgLineEdit);
@@ -23,6 +25,7 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     commentLabel    = new QLabel (tr("Comment:"));
     commentLineEdit = new QTextEdit;
     commentLineEdit->setAcceptRichText(false);
+    commentLineEdit->setFixedHeight(50);
     commentLabel->setBuddy(commentLineEdit);
 
     validationCheckBox = new QCheckBox (tr("Form Validation"));
@@ -42,19 +45,10 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
 
     connect(newProperty, SIGNAL(clicked()),this,SLOT(showDialog()));
 
-    QGridLayout *gridLayout = new QGridLayout;
+    QHBoxLayout *hbox0 = new QHBoxLayout;
+    hbox0->addWidget(widgetname);
+    hbox0->addWidget(newProperty);
 
-    gridLayout->addWidget(widgetname);
-    gridLayout->addWidget(msgLabel);
-    gridLayout->addWidget(msgLineEdit);
-    gridLayout->addWidget(commentLabel);
-    gridLayout->addWidget(commentLineEdit);
-    gridLayout->addWidget(outputLabel);
-    gridLayout->addWidget(outputComboBox);
-    gridLayout->addWidget(validationCheckBox);
-
-
-/*
     QHBoxLayout *hbox1 = new QHBoxLayout;
     hbox1->addWidget(msgLabel);
     hbox1->addWidget(msgLineEdit);
@@ -65,17 +59,32 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
 
     QHBoxLayout *hbox3 = new QHBoxLayout;
     hbox3->addWidget(outputLabel);
-    hbox3->addWidget(outputComboBox);
-*/
+    hbox3->addWidget(outputComboBox);     
+
+
     layout = new QVBoxLayout;
 
-    layout->addLayout(gridLayout);
-    layout->addWidget(newProperty);
-  //  layout->addLayout(hbox);
-    //layout->addSpacing(2);
-   // layout->addWidget(okButton);
+    layout->addLayout(hbox0);
+    layout->addLayout(hbox1);
+    layout->addLayout(hbox2);
+    layout->addLayout(hbox3);
+    layout->addWidget(validationCheckBox);
 
-    setLayout(layout);
+
+    //Create a widget and set its layout as your new layout created above
+    QWidget *viewport = new QWidget;
+    viewport->setLayout(layout );
+
+    //Add the viewport to the scroll area
+    QScrollArea *scrollArea = new QScrollArea;
+
+    scrollArea->setWidget(viewport);
+    scrollArea->setWidgetResizable(true);
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+
+    //Add the scroll area to your main window's layout
+    mainLayout->addWidget(scrollArea);
+    setLayout(mainLayout);
 
 
     setWindowTitle(tr("FlexView Properties"));

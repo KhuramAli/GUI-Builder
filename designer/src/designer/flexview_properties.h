@@ -5,7 +5,7 @@
 #include <QHash>
 #include <QLineEdit>
 #include <QTextEdit>
-#include <QDockWidget>
+
 
 class QCheckBox;
 class QLabel;
