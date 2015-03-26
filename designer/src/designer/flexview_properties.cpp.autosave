@@ -43,7 +43,7 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     connect(newProperty, SIGNAL(clicked()),this,SLOT(showDialog()));
 
     QGridLayout *gridLayout = new QGridLayout;
-    gridLayout->
+    
     gridLayout->addWidget(msgLabel);
     gridLayout->addWidget(msgLineEdit);
     gridLayout->addWidget(commentLabel);
