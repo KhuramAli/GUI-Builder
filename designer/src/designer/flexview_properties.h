@@ -5,7 +5,7 @@
 #include <QHash>
 #include <QLineEdit>
 #include <QTextEdit>
-
+#include <QPair>
 
 class QCheckBox;
 class QLabel;
@@ -16,6 +16,7 @@ class QVBoxLayout;
 class QScrollArea;
 class QFile;
 class domParser;
+class QStackedWidget;
 
 class flexview_properties : public QDialog
 {
@@ -30,11 +31,12 @@ public:
     void submit ();
     void clear();
     void setWidgetName(QString widget_name, QString class_name);
-    void addProperty(QString propertyName, QString propertyType);
+    void addProperty(QString propertyName, QString propertyType, QStringList comboList);
     void showProperty();
 
     QVector <QLineEdit*> textList;
     QVector <QCheckBox*> checkboxList;
+    QVector <QComboBox*> comboboxList;
 
 private slots:
     void showDialog();
@@ -50,17 +52,29 @@ private:
     QComboBox   *outputComboBox;
     QPushButton *newProperty;
 
-     QVBoxLayout *layout;
-     QWidget     *viewport;
-     QScrollArea *scrollArea;
-     QVBoxLayout *mainLayout;
+    QVBoxLayout     *layout;
+    QStackedWidget  *stackArea;
+    QVBoxLayout     *mainLayout;
+    QScrollArea     *scrollArea;
+    QVBoxLayout     *newbuttonbox;
 
-     QHash<QString, QString> newProperties;
+    static QWidget *formProperties;
+    static QWidget *buttonProperties;
+    static QWidget *checkboxProperties;
+    static QWidget *textboxProperties;
+    static QWidget *comboboxProperties;
+    static QWidget *labelProperties;
+    static QWidget *tempwidget;
+
+     typedef QPair <QString, QString> widget_key;
+     QHash<widget_key, QString> newProperties;
 
 static QHash<QString,QString> formPro;
 
-void saveSettings (QHash<QString,QString> newProperties);
+void saveSettings (QHash<widget_key,QString> newProperties);
 void loadSettings ();
+QWidget* loadFormSettings();
+QWidget* loadButtonSettings();
 
 QString className;
 

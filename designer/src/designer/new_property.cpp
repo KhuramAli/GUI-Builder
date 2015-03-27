@@ -5,9 +5,11 @@
 #include<QLineEdit>
 #include<QComboBox>
 #include<QPushButton>
-
+#include<QListView>
 #include<QHBoxLayout>
 #include<QVBoxLayout>
+#include<QStringListModel>
+#include<QInputDialog>
 
 new_property::new_property(QWidget * parent):QDialog(parent)
 {
@@ -21,6 +23,7 @@ new_property::new_property(QWidget * parent):QDialog(parent)
 
     type->addItem("string");
     type->addItem("bool");
+    type->addItem("combobox");
 
     okButton = new QPushButton(tr("Add New Property"));
 
@@ -36,19 +39,34 @@ new_property::new_property(QWidget * parent):QDialog(parent)
     hbox3->addWidget(okButton);
 
     connect(okButton,SIGNAL(clicked()),this,SLOT(createProperty()));
-    QVBoxLayout *layout = new QVBoxLayout;
+    connect(type,SIGNAL(currentTextChanged(QString)),this,SLOT(comboItems()));
+
+    layout = new QVBoxLayout;
     layout->addLayout(hbox1);
     layout->addLayout(hbox2);
     layout->addLayout(hbox3);
 
     setLayout(layout);
 
-
+    input = new QInputDialog;
     setWindowTitle(tr("Add New Property"));
 
 }
 
 void new_property::createProperty()
 {
-    DockedMainWindow::flex->addProperty(nameText->text(),type->currentText());
+
+    DockedMainWindow::flex->addProperty(nameText->text(),type->currentText(), stringlist);
+}
+
+void new_property::comboItems()
+{
+QString text;
+    if (type->currentText() == "combobox")
+    {
+
+    text = input->getMultiLineText(this,tr("add combobox items"),tr("add items"));
+    }
+stringlist = text.split("\n",QString::SkipEmptyParts);
+qDebug () << stringlist;
 }

@@ -7,6 +7,10 @@ class QLabel;
 class QLineEdit;
 class QComboBox;
 class QPushButton;
+class QListView;
+class QVBoxLayout;
+class QInputDialog;
+class QStringList;
 
 class new_property: public QDialog
 {
@@ -17,6 +21,7 @@ public:
 
 private slots:
     void createProperty();
+    void comboItems();
 
 private:
     QLabel      *nameLabel;
@@ -24,6 +29,12 @@ private:
     QLineEdit   *nameText;
     QComboBox   *type;
     QPushButton *okButton;
+    QListView   *list;
+
+    QStringList stringlist;
+    QVBoxLayout *layout;
+
+    QInputDialog *input;
 };
 
 #endif // NEW_PROPERTY_H
