@@ -68,5 +68,5 @@ QString text;
     text = input->getMultiLineText(this,tr("add combobox items"),tr("add items"));
     }
 stringlist = text.split("\n",QString::SkipEmptyParts);
-qDebug () << stringlist;
+
 }
