@@ -174,6 +174,8 @@ QHBoxLayout *newhbox = new QHBoxLayout;
 
         key.first = className;
         key.second = "comboBox";
+        propertyName.append(",");
+        propertyName.append(comboList.join("\n"));
     }
     if (className == "QPushButton")
     {
@@ -343,13 +345,25 @@ void flexview_properties::loadFormSettings()
         }
 
         i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
 
         while (i != newProperties.end() && i.key() == combokey) {
-            QLabel      *newlabel   = new QLabel(i.value()) ;
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+
+            QLabel      *newlabel   = new QLabel(value) ;
             QComboBox   *newcombo   = new QComboBox;
             QHBoxLayout * newhbox = new QHBoxLayout;
 
             newlabel->setBuddy(newcombo);
+            newcombo->addItems(combolist);
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             layout->addLayout(newhbox);
@@ -400,13 +414,25 @@ void flexview_properties::loadButtonSettings()
             }
 
             i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
 
             while (i != newProperties.end() && i.key() == combokey) {
-                QLabel      *newlabel   = new QLabel(i.value()) ;
+                templist = i.value().split(",",QString::SkipEmptyParts);
+                value = templist.at(0);
+                templist.removeAt(0);
+                temp = templist.join("\n");
+                combolist = temp.split("\n");
+
+                QLabel      *newlabel   = new QLabel(value) ;
                 QComboBox   *newcombo   = new QComboBox;
                 QHBoxLayout * newhbox = new QHBoxLayout;
 
                 newlabel->setBuddy(newcombo);
+                newcombo->addItems(combolist);
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newcombo);
                 newbuttonboxlayout->addLayout(newhbox);
@@ -454,13 +480,25 @@ void flexview_properties::loadCheckboxSettings()
         }
 
         i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
 
         while (i != newProperties.end() && i.key() == combokey) {
-            QLabel      *newlabel   = new QLabel(i.value()) ;
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+
+            QLabel      *newlabel   = new QLabel(value) ;
             QComboBox   *newcombo   = new QComboBox;
             QHBoxLayout * newhbox = new QHBoxLayout;
 
             newlabel->setBuddy(newcombo);
+            newcombo->addItems(combolist);
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newcheckboxlayout->addLayout(newhbox);
@@ -507,13 +545,25 @@ void flexview_properties::loadTextboxSettings()
         }
 
         i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
 
         while (i != newProperties.end() && i.key() == combokey) {
-            QLabel      *newlabel   = new QLabel(i.value()) ;
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+
+            QLabel      *newlabel   = new QLabel(value) ;
             QComboBox   *newcombo   = new QComboBox;
             QHBoxLayout * newhbox = new QHBoxLayout;
 
             newlabel->setBuddy(newcombo);
+            newcombo->addItems(combolist);
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newtextboxlayout->addLayout(newhbox);
@@ -561,13 +611,25 @@ void flexview_properties::loadComboboxSettings()
         }
 
         i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
 
         while (i != newProperties.end() && i.key() == combokey) {
-            QLabel      *newlabel   = new QLabel(i.value()) ;
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+
+            QLabel      *newlabel   = new QLabel(value) ;
             QComboBox   *newcombo   = new QComboBox;
             QHBoxLayout * newhbox = new QHBoxLayout;
 
             newlabel->setBuddy(newcombo);
+            newcombo->addItems(combolist);
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newcomboboxlayout->addLayout(newhbox);
@@ -614,13 +676,25 @@ void flexview_properties::loadLabelSettings()
         }
 
         i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
 
         while (i != newProperties.end() && i.key() == combokey) {
-            QLabel      *newlabel   = new QLabel(i.value()) ;
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+
+            QLabel      *newlabel   = new QLabel(value) ;
             QComboBox   *newcombo   = new QComboBox;
             QHBoxLayout * newhbox = new QHBoxLayout;
 
             newlabel->setBuddy(newcombo);
+            newcombo->addItems(combolist);
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newlabellayout->addLayout(newhbox);
