@@ -1507,9 +1507,9 @@ void QDesignerActions::loadFlexviewPro(QString file)
                     flexview_properties::formPro.insert("output", parentElement.text());
                 }
 
-                if (parentElement.tagName() == "checkBox")
+                if (parentElement.tagName() == "formValidation")
                 {
-                    flexview_properties::formPro.insert("checkBox", parentElement.text());
+                    flexview_properties::formPro.insert("formValidation", parentElement.text());
                 }
             }
 }

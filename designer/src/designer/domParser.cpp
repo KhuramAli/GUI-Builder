@@ -570,11 +570,11 @@ QByteArray domParser::writeFlexview(QDomDocument doc)
     QDomText u = doc.createTextNode(flexview_properties::formPro.value("output"));
     update.appendChild(u);
 
-    QDomElement checkBox = doc.createElement("checkBox");
-    properties.appendChild(checkBox);
-    QDomText cb = doc.createTextNode(flexview_properties::formPro.value("checkBox"));
-    checkBox.appendChild(cb);
-
+    QDomElement formValidation = doc.createElement("formValidation");
+    properties.appendChild(formValidation);
+    QDomText fv = doc.createTextNode(flexview_properties::formPro.value("formValidation"));
+    formValidation.appendChild(fv);
+DockedMainWindow::flex->getProperty();
 
     return doc.toByteArray();
 }

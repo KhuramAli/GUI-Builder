@@ -33,10 +33,7 @@ public:
     void setWidgetName(QString widget_name, QString class_name);
     void addProperty(QString propertyName, QString propertyType, QStringList comboList);
     void showProperty();
-
-    QVector <QLineEdit*> textList;
-    QVector <QCheckBox*> checkboxList;
-    QVector <QComboBox*> comboboxList;
+    QWidget* getProperty();
 
 private slots:
     void showDialog();
@@ -56,7 +53,12 @@ private:
     QStackedWidget  *stackArea;
     QVBoxLayout     *mainLayout;
     QScrollArea     *scrollArea;
-    QVBoxLayout     *newbuttonbox;
+    QVBoxLayout     *newbuttonboxlayout;
+    QVBoxLayout     *newcheckboxlayout;
+    QVBoxLayout     *newtextboxlayout;
+    QVBoxLayout     *newcomboboxlayout;
+    QVBoxLayout     *newlabellayout;
+
 
     static QWidget *formProperties;
     static QWidget *buttonProperties;
@@ -73,8 +75,12 @@ static QHash<QString,QString> formPro;
 
 void saveSettings (QHash<widget_key,QString> newProperties);
 void loadSettings ();
-QWidget* loadFormSettings();
-QWidget* loadButtonSettings();
+void loadFormSettings();
+void loadButtonSettings();
+void loadCheckboxSettings();
+void loadTextboxSettings();
+void loadComboboxSettings();
+void loadLabelSettings();
 
 QString className;
 
