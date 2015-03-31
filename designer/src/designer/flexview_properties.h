@@ -27,38 +27,30 @@ class flexview_properties : public QDialog
 
 public:
     flexview_properties(QWidget *parent = 0);
+    static QString getClassName();
     void updatePro ();
     void submit ();
     void clear();
     void setWidgetName(QString widget_name, QString class_name);
     void addProperty(QString propertyName, QString propertyType, QStringList comboList);
     void showProperty();
-    QWidget* getProperty();
+    void removeProperties(QString propertyName);
+    void saveSettings (QHash<QPair <QString, QString>,QString> newProperties);
+    QStringList* getPropertyList();
+    QHash<QPair <QString, QString>, QString> saveProperties();
 
 private slots:
     void showDialog();
+    void showRemove();
 
 private:
-    QLabel      *msgLabel;
-    QLabel      *commentLabel;
-    QLabel      *outputLabel;
-    QLabel      *widgetname;
-    QLineEdit   *msgLineEdit;
-    QTextEdit   *commentLineEdit;
-    QCheckBox   *validationCheckBox;
-    QComboBox   *outputComboBox;
-    QPushButton *newProperty;
-
-    QVBoxLayout     *layout;
-    QStackedWidget  *stackArea;
-    QVBoxLayout     *mainLayout;
-    QScrollArea     *scrollArea;
-    QVBoxLayout     *newbuttonboxlayout;
-    QVBoxLayout     *newcheckboxlayout;
-    QVBoxLayout     *newtextboxlayout;
-    QVBoxLayout     *newcomboboxlayout;
-    QVBoxLayout     *newlabellayout;
-
+    void loadSettings ();
+    void loadFormSettings();
+    void loadButtonSettings();
+    void loadCheckboxSettings();
+    void loadTextboxSettings();
+    void loadComboboxSettings();
+    void loadLabelSettings();
 
     static QWidget *formProperties;
     static QWidget *buttonProperties;
@@ -68,23 +60,34 @@ private:
     static QWidget *labelProperties;
     static QWidget *tempwidget;
 
-     typedef QPair <QString, QString> widget_key;
-     QHash<widget_key, QString> newProperties;
+    static QHash<QString,QString> formPro;
+    static QString className;
 
-static QHash<QString,QString> formPro;
+    QLabel      *msgLabel;
+    QLabel      *commentLabel;
+    QLabel      *outputLabel;
+    QLabel      *widgetname;
+    QLineEdit   *msgLineEdit;
+    QTextEdit   *commentLineEdit;
+    QCheckBox   *validationCheckBox;
+    QComboBox   *outputComboBox;
+    QPushButton *newProperty;
+    QPushButton *removeProperty;
 
-void saveSettings (QHash<widget_key,QString> newProperties);
-void loadSettings ();
-void loadFormSettings();
-void loadButtonSettings();
-void loadCheckboxSettings();
-void loadTextboxSettings();
-void loadComboboxSettings();
-void loadLabelSettings();
+    QVBoxLayout     *layout;
+    QVBoxLayout     *mainLayout;
+    QVBoxLayout     *newbuttonboxlayout;
+    QVBoxLayout     *newcheckboxlayout;
+    QVBoxLayout     *newtextboxlayout;
+    QVBoxLayout     *newcomboboxlayout;
+    QVBoxLayout     *newlabellayout;
+    QScrollArea     *scrollArea;
+    QStackedWidget  *stackArea;
 
-QString className;
-
-QFile * settingFile;
+    typedef QPair <QString, QString> widget_key;
+    QHash<widget_key, QString> newProperties;
+    QStringList stringList;
+    QFile * settingFile;
 };
 
 #endif // FLEXVIEW_PROPERTIES_H

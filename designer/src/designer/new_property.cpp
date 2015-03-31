@@ -55,8 +55,9 @@ new_property::new_property(QWidget * parent):QDialog(parent)
 
 void new_property::createProperty()
 {
-
-    DockedMainWindow::flex->addProperty(nameText->text(),type->currentText(), stringlist);
+    if(nameText->text() != "" && type->currentText() != ""){
+        DockedMainWindow::flex->addProperty(nameText->text(),type->currentText(), stringlist);
+    }
 }
 
 void new_property::comboItems()

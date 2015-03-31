@@ -40,7 +40,8 @@ HEADERS += \
     mainwindow.h \
     domParser.h \
     flexview_properties.h \
-    new_property.h
+    new_property.h \
+    remove_property.h
 
 SOURCES += main.cpp \
     qdesigner.cpp \
@@ -60,7 +61,8 @@ SOURCES += main.cpp \
     mainwindow.cpp \
     domParser.cpp \
     flexview_properties.cpp \
-    new_property.cpp
+    new_property.cpp \
+    remove_property.cpp
 
 PRECOMPILED_HEADER=qdesigner_pch.h
 
