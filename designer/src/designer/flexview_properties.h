@@ -31,17 +31,25 @@ public:
     void updatePro ();
     void submit ();
     void clear();
-    void setWidgetName(QString widget_name, QString class_name);
+    void setWidgetName(QWidget *current);
     void addProperty(QString propertyName, QString propertyType, QStringList comboList);
     void showProperty();
     void removeProperties(QString propertyName);
     void saveSettings (QHash<QPair <QString, QString>,QString> newProperties);
     QStringList* getPropertyList();
     QHash<QPair <QString, QString>, QString> saveProperties();
+    QWidgetList* getWidgetList();
+    void updatePropertyList();
 
 private slots:
     void showDialog();
     void showRemove();
+    void updateButtonList();
+   /* void updateCheckBoxList();
+    void updateComboBoxList();
+    void updateTextBoxList();
+    void updateLabelList();
+    void updateFormList();*/
 
 private:
     void loadSettings ();
@@ -63,16 +71,16 @@ private:
     static QHash<QString,QString> formPro;
     static QString className;
 
-    QLabel      *msgLabel;
-    QLabel      *commentLabel;
-    QLabel      *outputLabel;
-    QLabel      *widgetname;
-    QLineEdit   *msgLineEdit;
-    QTextEdit   *commentLineEdit;
-    QCheckBox   *validationCheckBox;
-    QComboBox   *outputComboBox;
-    QPushButton *newProperty;
-    QPushButton *removeProperty;
+    QLabel          *msgLabel;
+    QLabel          *commentLabel;
+    QLabel          *outputLabel;
+    QLabel          *widgetname;
+    QLineEdit       *msgLineEdit;
+    QTextEdit       *commentLineEdit;
+    QCheckBox       *validationCheckBox;
+    QComboBox       *outputComboBox;
+    QPushButton     *newProperty;
+    QPushButton     *removeProperty;
 
     QVBoxLayout     *layout;
     QVBoxLayout     *mainLayout;
@@ -83,11 +91,22 @@ private:
     QVBoxLayout     *newlabellayout;
     QScrollArea     *scrollArea;
     QStackedWidget  *stackArea;
+    QWidget         *currentWidget;
 
     typedef QPair <QString, QString> widget_key;
     QHash<widget_key, QString> newProperties;
+    QHash<QString, QHash<QString,QString>> widgetList;
     QStringList stringList;
     QFile * settingFile;
+
+    struct propertyList
+    {
+        QString classname;
+        QString title;
+        QHash<QString, QString> list;
+    };
+
+    QHash<QString, propertyList*> hashList;
 };
 
 #endif // FLEXVIEW_PROPERTIES_H

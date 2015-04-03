@@ -9,7 +9,7 @@
 #include <QHash>
 #include <QDir>
 #include <QStringList>
-
+#include <QWidget>
 
 class domParser
 {
@@ -43,6 +43,7 @@ private:
     QVector <widgetStruct*> list;
     QStringList flexProList;
     QHash<QString,QString>::const_iterator i;
+    QWidgetList * widgetList;
 
     void parseElement(QDomElement root, QString tag);
     void widget(QDomElement parentElement, QString att, widgetStruct * flexWidget);

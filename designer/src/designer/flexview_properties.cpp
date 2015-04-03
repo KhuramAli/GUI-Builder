@@ -62,6 +62,7 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     hbox0->addWidget(newProperty);
     hbox0->addWidget(removeProperty);
 
+    tempwidget->setObjectName("tempwidget");
     stackArea->addWidget(tempwidget);
 
     scrollArea->setWidget(stackArea);
@@ -127,10 +128,16 @@ void flexview_properties::clear()
     stackArea->setCurrentWidget(tempwidget);
 }
 
-void flexview_properties::setWidgetName(QString widget_name, QString class_name)
+void flexview_properties::setWidgetName(QWidget* current)
 {
-    widgetname->setText(widget_name.append(" : ").append(class_name));
-    className = class_name;
+    QString name;
+    name.append(current->objectName());
+    name.append(" : ");
+    name.append(current->property("text").toString());
+    widgetname->setText(name);
+    className = current->metaObject()->className();
+    currentWidget = current;
+    updatePropertyList();
 }
 
 
@@ -313,6 +320,7 @@ void flexview_properties::loadFormSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newline);
             layout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -362,6 +370,7 @@ QString temp;
         }
 
     formProperties = new QWidget;
+    formProperties->setObjectName(DIALOG);
     formProperties->setLayout(layout );
     stackArea->addWidget(formProperties);
 }
@@ -386,6 +395,7 @@ void flexview_properties::loadButtonSettings()
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newline);
                 newbuttonboxlayout->addLayout(newhbox);
+                connect(newline,SIGNAL(editingFinished()),this,SLOT(updateButtonList()));
                 ++i;
             }
 
@@ -402,6 +412,7 @@ void flexview_properties::loadButtonSettings()
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newcheckbox);
                 newbuttonboxlayout->addLayout(newhbox);
+                connect(newcheckbox,SIGNAL(released()),this,SLOT(updateButtonList()));
                 ++i;
             }
 
@@ -430,11 +441,13 @@ QString temp;
                 newcombo->setObjectName(value);
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newcombo);
+                connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateButtonList()));
                 newbuttonboxlayout->addLayout(newhbox);
                 ++i;
             }
 
         buttonProperties->setLayout(newbuttonboxlayout);
+        buttonProperties->setObjectName(BUTTON);
         stackArea->addWidget(buttonProperties);
 }
 
@@ -507,6 +520,7 @@ QString temp;
         }
 
     checkboxProperties->setLayout(newcheckboxlayout);
+    checkboxProperties->setObjectName(CHECKBOX);
     stackArea->addWidget(checkboxProperties);
 }
 
@@ -579,6 +593,7 @@ QString temp;
         }
 
     textboxProperties->setLayout(newtextboxlayout);
+    textboxProperties->setObjectName(TEXTBOX);
     stackArea->addWidget(textboxProperties);
 }
 
@@ -651,6 +666,7 @@ QString temp;
         }
 
     comboboxProperties->setLayout(newcomboboxlayout);
+    comboboxProperties->setObjectName(COMBOBOX);
     stackArea->addWidget(comboboxProperties);
 }
 
@@ -723,6 +739,7 @@ QString temp;
         }
 
     labelProperties->setLayout(newlabellayout);
+    labelProperties->setObjectName(LABEL);
     stackArea->addWidget(labelProperties);
 }
 
@@ -831,7 +848,7 @@ void flexview_properties::removeProperties(QString propertyName)
 
 QHash<QPair <QString, QString>, QString> flexview_properties::saveProperties()
 {
-    widget_key  key;
+    widget_key  key;        //stores settings. first = classname, second = property type.
     QString     temp;
     QString     propertyName;
     newProperties.clear();
@@ -1024,4 +1041,115 @@ QHash<QPair <QString, QString>, QString> flexview_properties::saveProperties()
               }
     return newProperties;
 }
+
+QWidgetList* flexview_properties::getWidgetList()
+{
+    QWidgetList * widgetList = new QWidgetList;
+
+    for(int i = 0; i < stackArea->children().size();i++){
+        if(stackArea->children().at(i)->isWidgetType()){
+            widgetList->append(qobject_cast<QWidget *>(stackArea->children().at(i)));
+        }
+    }
+    return widgetList;
+}
+
+void flexview_properties::updatePropertyList()
+{
+QString temp;
+QLineEdit *newline;
+QCheckBox *newcheckbox;
+QComboBox *newcombo;
+
+for(int i = 0; i < buttonProperties->children().size(); i++){
+    temp = buttonProperties->children().at(i)->metaObject()->className();
+    if(temp == TEXTBOX){
+        newline = (QLineEdit*)buttonProperties->children().at(i);
+            foreach(currentWidget->objectName(),widgetList.keys()){
+                foreach(newline->objectName(),widgetList.value(currentWidget->objectName()).keys()){
+                    newline->setText(widgetList.value(currentWidget->objectName()).value(newline->objectName()));
+                }
+            }
+    }else if(temp == CHECKBOX){
+        newcheckbox = (QCheckBox*)buttonProperties->children().at(i);
+            foreach(currentWidget->objectName(),widgetList.keys()){
+                foreach(newcheckbox->objectName(),widgetList.value(currentWidget->objectName()).keys()){
+                    if(widgetList.value(currentWidget->objectName()).value(newcheckbox->objectName()) == "true"){
+                        newcheckbox->setChecked(true);
+                    }else{
+                        newcheckbox->setChecked(false);
+                    }
+                }
+            }
+    }else if(temp == COMBOBOX){
+        newcombo = (QComboBox*)buttonProperties->children().at(i);
+            foreach(currentWidget->objectName(),widgetList.keys()){
+                foreach(newcombo->objectName(),widgetList.value(currentWidget->objectName()).keys()){
+                    newcombo->setCurrentText(widgetList.value(currentWidget->objectName()).value(newcombo->objectName()));
+                }
+            }
+    }
+
+
+}
+
+}
+
+void flexview_properties::updateButtonList()
+{
+    propertyList *prolist = new propertyList;
+    QString temp;
+    QString ischecked = false;
+    QLineEdit *newline;
+    QCheckBox *newcheckbox;
+    QComboBox *newcombo;
+    QHash<QString,QString> hash;
+
+    for(int i = 0; i < buttonProperties->children().size(); i++){
+        temp = buttonProperties->children().at(i)->metaObject()->className();
+        if( temp == TEXTBOX){
+            newline = (QLineEdit*)buttonProperties->children().at(i);
+            prolist->classname = BUTTON;
+            prolist->title = currentWidget->property("text").toString();
+            prolist->list.insert(newline->objectName(), newline->text());
+            hashList.insert(currentWidget->objectName(),prolist);
+
+            hash.insert(newline->objectName(),newline->text());
+            widgetList.insert(currentWidget->objectName(),hash);
+
+        }else if( temp == CHECKBOX){
+            newcheckbox = (QCheckBox*)buttonProperties->children().at(i);
+            if (newcheckbox->isChecked()){
+                ischecked = "true";
+            }else{
+                ischecked = "false";
+            }
+            prolist->classname = BUTTON;
+            prolist->title = currentWidget->property("text").toString();
+            prolist->list.insert(newcheckbox->objectName(), ischecked);
+            hashList.insert(currentWidget->objectName(),prolist);
+            hash.insert(newcheckbox->objectName(),ischecked);
+            widgetList.insert(currentWidget->objectName(),hash);
+
+        }else if( temp == COMBOBOX){
+            newcombo = (QComboBox*)buttonProperties->children().at(i);
+            prolist->classname = BUTTON;
+            prolist->title = currentWidget->property("text").toString();
+            prolist->list.insert(newcombo->objectName(), newcombo->currentText());
+            hashList.insert(currentWidget->objectName(),prolist);
+
+            hash.insert(newcombo->objectName(),newcombo->currentText());
+            widgetList.insert(currentWidget->objectName(),hash);
+
+            }
+
+       }
+
+qDebug() << widgetList;
+qDebug() << widgetList.size();
+
+}
+
+
+
 

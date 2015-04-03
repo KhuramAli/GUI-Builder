@@ -300,7 +300,7 @@ void QDesignerFormWindow::geometryChanged()
 
 void QDesignerFormWindow::flexProperties()
 {
-    DockedMainWindow::flex->setWidgetName(form->cursor()->current()->objectName() ,form->cursor()->current()->metaObject()->className());
+    DockedMainWindow::flex->setWidgetName(form->cursor()->current());
     DockedMainWindow::flex->showProperty();
 }
 
