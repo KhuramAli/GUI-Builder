@@ -1121,18 +1121,6 @@ QHash<QPair <QString, QString>, QString> flexview_properties::saveProperties()
     return newProperties;
 }
 
-QWidgetList* flexview_properties::getWidgetList()
-{
-    QWidgetList * widgetList = new QWidgetList;
-
-    for(int i = 0; i < stackArea->children().size();i++){
-        if(stackArea->children().at(i)->isWidgetType()){
-            widgetList->append(qobject_cast<QWidget *>(stackArea->children().at(i)));
-        }
-    }
-    return widgetList;
-}
-
 void flexview_properties::updatePropertyList(QWidget *stackedWidget)
 {
 QString temp;

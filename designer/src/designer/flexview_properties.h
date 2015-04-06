@@ -38,7 +38,6 @@ public:
     void saveSettings (QHash<QPair <QString, QString>,QString> newProperties);
     QStringList* getPropertyList();
     QHash<QPair <QString, QString>, QString> saveProperties();
-    QWidgetList* getWidgetList();
 
 private slots:
     void showDialog();
