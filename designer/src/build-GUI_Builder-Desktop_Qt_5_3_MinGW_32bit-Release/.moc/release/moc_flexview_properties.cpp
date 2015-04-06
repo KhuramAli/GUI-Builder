@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_flexview_properties_t {
     QByteArrayData data[5];
-    char stringdata[60];
+    char stringdata[54];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,10 +33,10 @@ QT_MOC_LITERAL(0, 0, 19),
 QT_MOC_LITERAL(1, 20, 10),
 QT_MOC_LITERAL(2, 31, 0),
 QT_MOC_LITERAL(3, 32, 10),
-QT_MOC_LITERAL(4, 43, 16)
+QT_MOC_LITERAL(4, 43, 10)
     },
     "flexview_properties\0showDialog\0\0"
-    "showRemove\0updateButtonList"
+    "showRemove\0updateList"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,7 +73,7 @@ void flexview_properties::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         switch (_id) {
         case 0: _t->showDialog(); break;
         case 1: _t->showRemove(); break;
-        case 2: _t->updateButtonList(); break;
+        case 2: _t->updateList(); break;
         default: ;
         }
     }

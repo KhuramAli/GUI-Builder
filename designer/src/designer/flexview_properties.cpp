@@ -6,9 +6,10 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QTextEdit>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QGridLayout>
 #include <QStringList>
 #include <QFile>
 #include <abstractformwindow.h>
@@ -21,6 +22,7 @@ QWidget* flexview_properties::formProperties;
 QWidget* flexview_properties::buttonProperties;
 QWidget* flexview_properties::checkboxProperties;
 QWidget* flexview_properties::textboxProperties;
+QWidget* flexview_properties::mtexteditProperties;
 QWidget* flexview_properties::comboboxProperties;
 QWidget* flexview_properties::labelProperties;
 QWidget* flexview_properties::tempwidget;
@@ -32,6 +34,7 @@ QString flexview_properties::className;
 #define BUTTON      "QPushButton"
 #define CHECKBOX    "QCheckBox"
 #define TEXTBOX     "QLineEdit"
+#define MTEXTEDIT   "QTextEdit"
 #define COMBOBOX    "QComboBox"
 #define LABEL       "QLabel"
 #define DIALOG      "QDesignerDialog"
@@ -73,6 +76,11 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
 
     formProperties      = new QWidget;
     buttonProperties    = new QWidget;
+    checkboxProperties  = new QWidget;
+    textboxProperties   = new QWidget;
+    mtexteditProperties = new QWidget;
+    comboboxProperties  = new QWidget;
+    labelProperties     = new QWidget;
 
     setWindowTitle(tr("FlexView Properties"));
     
@@ -89,6 +97,7 @@ loadCheckboxSettings();
 loadComboboxSettings();
 loadLabelSettings();
 loadTextboxSettings();
+loadMtextEditSettings();
 stackArea->setCurrentWidget(tempwidget);
 }
 
@@ -137,7 +146,6 @@ void flexview_properties::setWidgetName(QWidget* current)
     widgetname->setText(name);
     className = current->metaObject()->className();
     currentWidget = current;
-    updatePropertyList();
 }
 
 
@@ -200,6 +208,8 @@ if (propertyName != temp.at(0)){
         newcheckboxlayout->addLayout(newhbox);
     }else if (className == TEXTBOX){
         newtextboxlayout->addLayout(newhbox);
+    }else if (className == MTEXTEDIT){
+        newmtexteditlayout->addLayout(newhbox);
     }else if(className == COMBOBOX){
         newcomboboxlayout->addLayout(newhbox);
     }else if (className == LABEL){
@@ -246,18 +256,12 @@ void flexview_properties::showDialog()
 
 void flexview_properties::showProperty()
 {
-    if (className == BUTTON){
-       stackArea->setCurrentWidget(buttonProperties);
-    }else if (className == CHECKBOX){
-        stackArea->setCurrentWidget(checkboxProperties);
-    }else if (className == TEXTBOX){
-        stackArea->setCurrentWidget(textboxProperties);
-    }else if (className == COMBOBOX){
-        stackArea->setCurrentWidget(comboboxProperties);
-    }else if (className == LABEL){
-        stackArea->setCurrentWidget(labelProperties);
-    }else{
-        stackArea->setCurrentWidget(formProperties);
+    for(int i = 0; i < stackArea->count(); i++){
+        if (className == stackArea->widget(i)->objectName()){
+            stackArea->setCurrentWidget(stackArea->widget(i));
+            updatePropertyList(stackArea->widget(i));
+            break;
+        }
     }
 }
 
@@ -285,6 +289,10 @@ void flexview_properties::loadFormSettings()
     outputComboBox->addItem("context");
     outputComboBox->addItem("refresh");
 
+    connect(msgLineEdit,SIGNAL(editingFinished()),this,SLOT(updateList()));
+    connect(commentLineEdit,SIGNAL(textChanged()),this,SLOT(updateList()));
+    connect(validationCheckBox,SIGNAL(released()),this,SLOT(updateList()));
+    connect(outputComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
     QHBoxLayout *hbox1 = new QHBoxLayout;
     hbox1->addWidget(msgLabel);
     hbox1->addWidget(msgLineEdit);
@@ -337,6 +345,7 @@ void flexview_properties::loadFormSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcheckbox);
             layout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -366,6 +375,7 @@ QString temp;
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             layout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
             ++i;
         }
 
@@ -395,7 +405,7 @@ void flexview_properties::loadButtonSettings()
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newline);
                 newbuttonboxlayout->addLayout(newhbox);
-                connect(newline,SIGNAL(editingFinished()),this,SLOT(updateButtonList()));
+                connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
                 ++i;
             }
 
@@ -412,7 +422,7 @@ void flexview_properties::loadButtonSettings()
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newcheckbox);
                 newbuttonboxlayout->addLayout(newhbox);
-                connect(newcheckbox,SIGNAL(released()),this,SLOT(updateButtonList()));
+                connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
                 ++i;
             }
 
@@ -441,7 +451,7 @@ QString temp;
                 newcombo->setObjectName(value);
                 newhbox->addWidget(newlabel);
                 newhbox->addWidget(newcombo);
-                connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateButtonList()));
+                connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
                 newbuttonboxlayout->addLayout(newhbox);
                 ++i;
             }
@@ -471,6 +481,7 @@ void flexview_properties::loadCheckboxSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newline);
             newcheckboxlayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -487,6 +498,7 @@ void flexview_properties::loadCheckboxSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcheckbox);
             newcheckboxlayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -516,6 +528,7 @@ QString temp;
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newcheckboxlayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
             ++i;
         }
 
@@ -544,6 +557,7 @@ void flexview_properties::loadTextboxSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newline);
             newtextboxlayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -560,6 +574,7 @@ void flexview_properties::loadTextboxSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcheckbox);
             newtextboxlayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -589,12 +604,89 @@ QString temp;
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newtextboxlayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
             ++i;
         }
 
     textboxProperties->setLayout(newtextboxlayout);
     textboxProperties->setObjectName(TEXTBOX);
     stackArea->addWidget(textboxProperties);
+}
+
+void flexview_properties::loadMtextEditSettings()
+{
+    widget_key textkey(MTEXTEDIT,PSTRING);
+    widget_key boolkey(MTEXTEDIT,PBOOL);
+    widget_key combokey(MTEXTEDIT,PCOMBO);
+    newmtexteditlayout = new QVBoxLayout;
+
+    QHash<widget_key, QString>::iterator i = newProperties.find(textkey);
+
+        while (i != newProperties.end() && i.key() == textkey) {
+            QLabel      *newlabel   = new QLabel(i.value()) ;
+            QLineEdit   *newline    = new QLineEdit;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newline);
+            newlabel->setObjectName(i.value());
+            newline->setObjectName(i.value());
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newline);
+            newmtexteditlayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
+            ++i;
+        }
+
+        i = newProperties.find(boolkey);
+
+        while (i != newProperties.end() && i.key() == boolkey) {
+            QLabel      *newlabel       = new QLabel(i.value()) ;
+            QCheckBox   *newcheckbox    = new QCheckBox;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newcheckbox);
+            newlabel->setObjectName(i.value());
+            newcheckbox->setObjectName(i.value());
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newcheckbox);
+            newmtexteditlayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
+            ++i;
+        }
+
+        i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
+
+        while (i != newProperties.end() && i.key() == combokey) {
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+            combolist.removeAt(0);
+
+            QLabel      *newlabel   = new QLabel(value) ;
+            QComboBox   *newcombo   = new QComboBox;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newcombo);
+            newlabel->setObjectName(value);
+            newcombo->setObjectName(value);
+            newcombo->addItems(combolist);
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newcombo);
+            newmtexteditlayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
+            ++i;
+        }
+
+    mtexteditProperties->setLayout(newmtexteditlayout);
+    mtexteditProperties->setObjectName(MTEXTEDIT);
+    stackArea->addWidget(mtexteditProperties);
 }
 
 void flexview_properties::loadComboboxSettings()
@@ -617,6 +709,7 @@ void flexview_properties::loadComboboxSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newline);
             newcomboboxlayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -633,6 +726,7 @@ void flexview_properties::loadComboboxSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcheckbox);
             newcomboboxlayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -662,6 +756,7 @@ QString temp;
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newcomboboxlayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
             ++i;
         }
 
@@ -690,6 +785,7 @@ void flexview_properties::loadLabelSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newline);
             newlabellayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -706,6 +802,7 @@ void flexview_properties::loadLabelSettings()
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcheckbox);
             newlabellayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
             ++i;
         }
 
@@ -735,6 +832,7 @@ QString temp;
             newhbox->addWidget(newlabel);
             newhbox->addWidget(newcombo);
             newlabellayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
             ++i;
         }
 
@@ -742,7 +840,6 @@ QString temp;
     labelProperties->setObjectName(LABEL);
     stackArea->addWidget(labelProperties);
 }
-
 
 QString flexview_properties::getClassName()
 {
@@ -762,6 +859,13 @@ QStringList* flexview_properties::getPropertyList()
         return &stringList;
     }else if(className == TEXTBOX){
         list = textboxProperties->children();
+        stringList.clear();
+        for(int i = 0; i < list.size(); i++){
+            stringList.append(list.at(i)->objectName());
+        }
+        return &stringList;
+    }else if(className == MTEXTEDIT){
+        list = mtexteditProperties->children();
         stringList.clear();
         for(int i = 0; i < list.size(); i++){
             stringList.append(list.at(i)->objectName());
@@ -806,44 +910,14 @@ void flexview_properties::showRemove()
 
 void flexview_properties::removeProperties(QString propertyName)
 {
-    if (className == BUTTON){
-        for(int i = 0; i <buttonProperties->children().size(); i++){
-            if(buttonProperties->children().at(i)->objectName() == propertyName){
-                delete buttonProperties->children().at(i);
+    QWidget *stackWidget = stackArea->currentWidget();
+    /*if (className == BUTTON){*/
+        for(int i = 0; i <stackWidget->children().size(); i++){
+            if(stackWidget->children().at(i)->objectName() == propertyName){
+                delete stackWidget->children().at(i);
             }
         }
-    }else if (className == CHECKBOX){
-        for(int i = 0; i <checkboxProperties->children().size(); i++){
-            if(checkboxProperties->children().at(i)->objectName() == propertyName){
-                delete checkboxProperties->children().at(i);
-            }
-        }
-    }else if (className == TEXTBOX){
-        for(int i = 0; i <textboxProperties->children().size(); i++){
-            if(textboxProperties->children().at(i)->objectName() == propertyName){
-                delete textboxProperties->children().at(i);
-            }
-        }
-    }else if (className == COMBOBOX){
-        for(int i = 0; i <comboboxProperties->children().size(); i++){
-            if(comboboxProperties->children().at(i)->objectName() == propertyName){
-                delete comboboxProperties->children().at(i);
-            }
-        }
-    }else if (className == LABEL){
-        for(int i = 0; i <labelProperties->children().size(); i++){
-            if(labelProperties->children().at(i)->objectName() == propertyName){
-                delete labelProperties->children().at(i);
-            }
-        }
-    }else{
-        for(int i = 0; i <formProperties->children().size(); i++){
-            if(formProperties->children().at(i)->objectName() == propertyName){
-                delete formProperties->children().at(i);
-            }
-    }
-}
-    saveSettings(saveProperties());
+   saveSettings(saveProperties());
 }
 
 QHash<QPair <QString, QString>, QString> flexview_properties::saveProperties()
@@ -852,91 +926,32 @@ QHash<QPair <QString, QString>, QString> flexview_properties::saveProperties()
     QString     temp;
     QString     propertyName;
     newProperties.clear();
+    QWidget *stackWidget;
 
-    for(int i = 0; i < buttonProperties->children().size(); i++){
-        temp = buttonProperties->children().at(i)->metaObject()->className();
-        if(temp == TEXTBOX){
-            key.first       = BUTTON;
-            key.second      = PSTRING;
-            propertyName    = buttonProperties->children().at(i)->objectName();
-            if(propertyName != newProperties.value(key)){
-                newProperties.insertMulti(key,propertyName);
-            }
-        }else if(temp == CHECKBOX){
-            key.first       = BUTTON;
-            key.second      = PBOOL;
-            propertyName    = buttonProperties->children().at(i)->objectName();
-            if(propertyName != newProperties.value(key)){
-                newProperties.insertMulti(key,propertyName);
-            }
-        }else if(temp == COMBOBOX){
-            key.first       = BUTTON;
-            key.second      = PCOMBO;
-            propertyName    = buttonProperties->children().at(i)->objectName();
-            if(propertyName != newProperties.value(key)){
-                QComboBox * newcombo = (QComboBox*)buttonProperties->children().at(i);
-                propertyName.append(",");
-                for(int j =0; j < newcombo->count();j++){
-                    propertyName.append("\n");
-                    propertyName.append(newcombo->itemText(j));
-                }
-                newProperties.insertMulti(key,propertyName);
-            }
-    }
-  }
-    for(int i = 0; i < checkboxProperties->children().size(); i++){
-        temp = checkboxProperties->children().at(i)->metaObject()->className();
-        if(temp == TEXTBOX){
-            key.first       = CHECKBOX;
-            key.second      = PSTRING;
-            propertyName    = checkboxProperties->children().at(i)->objectName();
-            if(propertyName != newProperties.value(key)){
-                newProperties.insertMulti(key,propertyName);
-            }
-        }else if(temp == CHECKBOX){
-            key.first       = CHECKBOX;
-            key.second      = PBOOL;
-            propertyName    = checkboxProperties->children().at(i)->objectName();
-            if(propertyName != newProperties.value(key)){
-                newProperties.insertMulti(key,propertyName);
-            }
-        }else if(temp == COMBOBOX){
-            key.first       = CHECKBOX;
-            key.second      = PCOMBO;
-            propertyName    = checkboxProperties->children().at(i)->objectName();
-            if(propertyName != newProperties.value(key)){
-                QComboBox * newcombo = (QComboBox*)checkboxProperties->children().at(i);
-                propertyName.append(",");
-                for(int j =0; j < newcombo->count();j++){
-                    propertyName.append("\n");
-                    propertyName.append(newcombo->itemText(j));
-                }
-                newProperties.insertMulti(key,propertyName);
-            }
-    }
-  }
-        for(int i = 0; i < textboxProperties->children().size(); i++){
-            temp = textboxProperties->children().at(i)->metaObject()->className();
+    for (int j = 0; j < stackArea->count();j++){
+        stackWidget = stackArea->widget(j);
+        for(int i = 0; i < stackWidget->children().size(); i++){
+            temp = stackWidget->children().at(i)->metaObject()->className();
             if(temp == TEXTBOX){
-                key.first       = TEXTBOX;
+                key.first       = stackWidget->objectName();
                 key.second      = PSTRING;
-                propertyName    = textboxProperties->children().at(i)->objectName();
+                propertyName    = stackWidget->children().at(i)->objectName();
                 if(propertyName != newProperties.value(key)){
                     newProperties.insertMulti(key,propertyName);
                 }
             }else if(temp == CHECKBOX){
-                key.first       = TEXTBOX;
+                key.first       = stackWidget->objectName();
                 key.second      = PBOOL;
-                propertyName    = textboxProperties->children().at(i)->objectName();
+                propertyName    = stackWidget->children().at(i)->objectName();
                 if(propertyName != newProperties.value(key)){
                     newProperties.insertMulti(key,propertyName);
                 }
             }else if(temp == COMBOBOX){
-                key.first       = TEXTBOX;
+                key.first       = stackWidget->objectName();
                 key.second      = PCOMBO;
-                propertyName    = textboxProperties->children().at(i)->objectName();
+                propertyName    = stackWidget->children().at(i)->objectName();
                 if(propertyName != newProperties.value(key)){
-                    QComboBox * newcombo = (QComboBox*)textboxProperties->children().at(i);
+                    QComboBox * newcombo = (QComboBox*)stackWidget->children().at(i);
                     propertyName.append(",");
                     for(int j =0; j < newcombo->count();j++){
                         propertyName.append("\n");
@@ -945,100 +960,8 @@ QHash<QPair <QString, QString>, QString> flexview_properties::saveProperties()
                     newProperties.insertMulti(key,propertyName);
                 }
         }
-    }
-            for(int i = 0; i < labelProperties->children().size(); i++){
-                temp = labelProperties->children().at(i)->metaObject()->className();
-                if(temp == TEXTBOX){
-                    key.first       = LABEL;
-                    key.second      = PSTRING;
-                    propertyName    = labelProperties->children().at(i)->objectName();
-                    if(propertyName != newProperties.value(key)){
-                        newProperties.insertMulti(key,propertyName);
-                    }
-                }else if(temp == CHECKBOX){
-                    key.first       = LABEL;
-                    key.second      = PBOOL;
-                    propertyName    = labelProperties->children().at(i)->objectName();
-                    if(propertyName != newProperties.value(key)){
-                        newProperties.insertMulti(key,propertyName);
-                    }
-                }else if(temp == COMBOBOX){
-                    key.first       = LABEL;
-                    key.second      = PCOMBO;
-                    propertyName    = labelProperties->children().at(i)->objectName();
-                    if(propertyName != newProperties.value(key)){
-                        QComboBox * newcombo = (QComboBox*)labelProperties->children().at(i);
-                        propertyName.append(",");
-                        for(int j =0; j < newcombo->count();j++){
-                            propertyName.append("\n");
-                            propertyName.append(newcombo->itemText(j));
-                        }
-                        newProperties.insertMulti(key,propertyName);
-                    }
-            }
-        }
-                for(int i = 0; i < formProperties->children().size(); i++){
-                    temp = formProperties->children().at(i)->metaObject()->className();
-                    if(temp == TEXTBOX){
-                        key.first       = DIALOG;
-                        key.second      = PSTRING;
-                        propertyName    = formProperties->children().at(i)->objectName();
-                        if(propertyName != newProperties.value(key)){
-                            newProperties.insertMulti(key,propertyName);
-                        }
-                    }else if(temp == CHECKBOX){
-                        key.first       = DIALOG;
-                        key.second      = PBOOL;
-                        propertyName    = formProperties->children().at(i)->objectName();
-                        if(propertyName != newProperties.value(key)){
-                            newProperties.insertMulti(key,propertyName);
-                        }
-                    }else if(temp == COMBOBOX){
-                        key.first       = DIALOG;
-                        key.second      = PCOMBO;
-                        propertyName    = formProperties->children().at(i)->objectName();
-                        if(propertyName != newProperties.value(key)){
-                            QComboBox * newcombo = (QComboBox*)formProperties->children().at(i);
-                            propertyName.append(",");
-                            for(int j =0; j < newcombo->count();j++){
-                                propertyName.append("\n");
-                                propertyName.append(newcombo->itemText(j));
-                            }
-                            newProperties.insertMulti(key,propertyName);
-                        }
-                }
-            }
-                for(int i = 0; i < comboboxProperties->children().size(); i++){
-                    temp = comboboxProperties->children().at(i)->metaObject()->className();
-                    if(temp == TEXTBOX){
-                        key.first       = COMBOBOX;
-                        key.second      = PSTRING;
-                        propertyName    = comboboxProperties->children().at(i)->objectName();
-                        if(propertyName != newProperties.value(key)){
-                            newProperties.insertMulti(key,propertyName);
-                        }
-                    }else if(temp == CHECKBOX){
-                        key.first       = COMBOBOX;
-                        key.second      = PBOOL;
-                        propertyName    = comboboxProperties->children().at(i)->objectName();
-                        if(propertyName != newProperties.value(key)){
-                            newProperties.insertMulti(key,propertyName);
-                        }
-                    }else if(temp == COMBOBOX){
-                        key.first       = COMBOBOX;
-                        key.second      = PCOMBO;
-                        propertyName    = comboboxProperties->children().at(i)->objectName();
-                        if(propertyName != newProperties.value(key)){
-                            QComboBox * newcombo = (QComboBox*)comboboxProperties->children().at(i);
-                            propertyName.append(",");
-                            for(int j =0; j < newcombo->count();j++){
-                                propertyName.append("\n");
-                                propertyName.append(newcombo->itemText(j));
-                            }
-                            newProperties.insertMulti(key,propertyName);
-                        }
-                }
-              }
+      }
+   }
     return newProperties;
 }
 
@@ -1054,24 +977,24 @@ QWidgetList* flexview_properties::getWidgetList()
     return widgetList;
 }
 
-void flexview_properties::updatePropertyList()
+void flexview_properties::updatePropertyList(QWidget *stackedWidget)
 {
 QString temp;
 QLineEdit *newline;
 QCheckBox *newcheckbox;
 QComboBox *newcombo;
 
-for(int i = 0; i < buttonProperties->children().size(); i++){
-    temp = buttonProperties->children().at(i)->metaObject()->className();
+for(int i = 0; i < stackedWidget->children().size(); i++){
+    temp = stackedWidget->children().at(i)->metaObject()->className();
     if(temp == TEXTBOX){
-        newline = (QLineEdit*)buttonProperties->children().at(i);
+        newline = (QLineEdit*)stackedWidget->children().at(i);
             foreach(currentWidget->objectName(),widgetList.keys()){
                 foreach(newline->objectName(),widgetList.value(currentWidget->objectName()).keys()){
                     newline->setText(widgetList.value(currentWidget->objectName()).value(newline->objectName()));
                 }
             }
     }else if(temp == CHECKBOX){
-        newcheckbox = (QCheckBox*)buttonProperties->children().at(i);
+        newcheckbox = (QCheckBox*)stackedWidget->children().at(i);
             foreach(currentWidget->objectName(),widgetList.keys()){
                 foreach(newcheckbox->objectName(),widgetList.value(currentWidget->objectName()).keys()){
                     if(widgetList.value(currentWidget->objectName()).value(newcheckbox->objectName()) == "true"){
@@ -1082,34 +1005,33 @@ for(int i = 0; i < buttonProperties->children().size(); i++){
                 }
             }
     }else if(temp == COMBOBOX){
-        newcombo = (QComboBox*)buttonProperties->children().at(i);
+        newcombo = (QComboBox*)stackedWidget->children().at(i);
             foreach(currentWidget->objectName(),widgetList.keys()){
                 foreach(newcombo->objectName(),widgetList.value(currentWidget->objectName()).keys()){
                     newcombo->setCurrentText(widgetList.value(currentWidget->objectName()).value(newcombo->objectName()));
                 }
             }
     }
-
-
-}
+  }
 
 }
 
-void flexview_properties::updateButtonList()
+void flexview_properties::updateList()
 {
+    QWidget *stackWidget = stackArea->currentWidget();
     propertyList *prolist = new propertyList;
     QString temp;
-    QString ischecked = false;
+    QString ischecked = "false";
     QLineEdit *newline;
     QCheckBox *newcheckbox;
     QComboBox *newcombo;
     QHash<QString,QString> hash;
 
-    for(int i = 0; i < buttonProperties->children().size(); i++){
-        temp = buttonProperties->children().at(i)->metaObject()->className();
+    for(int i = 0; i < stackWidget->children().size(); i++){
+        temp = stackWidget->children().at(i)->metaObject()->className();
         if( temp == TEXTBOX){
-            newline = (QLineEdit*)buttonProperties->children().at(i);
-            prolist->classname = BUTTON;
+            newline = (QLineEdit*)stackWidget->children().at(i);
+            prolist->classname = className;
             prolist->title = currentWidget->property("text").toString();
             prolist->list.insert(newline->objectName(), newline->text());
             hashList.insert(currentWidget->objectName(),prolist);
@@ -1118,13 +1040,13 @@ void flexview_properties::updateButtonList()
             widgetList.insert(currentWidget->objectName(),hash);
 
         }else if( temp == CHECKBOX){
-            newcheckbox = (QCheckBox*)buttonProperties->children().at(i);
+            newcheckbox = (QCheckBox*)stackWidget->children().at(i);
             if (newcheckbox->isChecked()){
                 ischecked = "true";
             }else{
                 ischecked = "false";
             }
-            prolist->classname = BUTTON;
+            prolist->classname = className;
             prolist->title = currentWidget->property("text").toString();
             prolist->list.insert(newcheckbox->objectName(), ischecked);
             hashList.insert(currentWidget->objectName(),prolist);
@@ -1132,24 +1054,14 @@ void flexview_properties::updateButtonList()
             widgetList.insert(currentWidget->objectName(),hash);
 
         }else if( temp == COMBOBOX){
-            newcombo = (QComboBox*)buttonProperties->children().at(i);
-            prolist->classname = BUTTON;
+            newcombo = (QComboBox*)stackWidget->children().at(i);
+            prolist->classname = className;
             prolist->title = currentWidget->property("text").toString();
             prolist->list.insert(newcombo->objectName(), newcombo->currentText());
             hashList.insert(currentWidget->objectName(),prolist);
 
             hash.insert(newcombo->objectName(),newcombo->currentText());
             widgetList.insert(currentWidget->objectName(),hash);
-
             }
-
        }
-
-qDebug() << widgetList;
-qDebug() << widgetList.size();
-
 }
-
-
-
-

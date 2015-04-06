@@ -3,13 +3,13 @@
 
 #include <QDialog>
 #include <QHash>
-#include <QLineEdit>
-#include <QTextEdit>
 #include <QPair>
 
 class QCheckBox;
 class QLabel;
 class QPushButton;
+class QLineEdit;
+class QTextEdit;
 class QStringList;
 class QComboBox;
 class QVBoxLayout;
@@ -39,17 +39,11 @@ public:
     QStringList* getPropertyList();
     QHash<QPair <QString, QString>, QString> saveProperties();
     QWidgetList* getWidgetList();
-    void updatePropertyList();
 
 private slots:
     void showDialog();
     void showRemove();
-    void updateButtonList();
-   /* void updateCheckBoxList();
-    void updateComboBoxList();
-    void updateTextBoxList();
-    void updateLabelList();
-    void updateFormList();*/
+    void updateList();
 
 private:
     void loadSettings ();
@@ -57,17 +51,19 @@ private:
     void loadButtonSettings();
     void loadCheckboxSettings();
     void loadTextboxSettings();
+    void loadMtextEditSettings();
     void loadComboboxSettings();
     void loadLabelSettings();
+    void updatePropertyList(QWidget* stackedWidget);
 
     static QWidget *formProperties;
     static QWidget *buttonProperties;
     static QWidget *checkboxProperties;
     static QWidget *textboxProperties;
+    static QWidget *mtexteditProperties;
     static QWidget *comboboxProperties;
     static QWidget *labelProperties;
     static QWidget *tempwidget;
-
     static QHash<QString,QString> formPro;
     static QString className;
 
@@ -87,6 +83,7 @@ private:
     QVBoxLayout     *newbuttonboxlayout;
     QVBoxLayout     *newcheckboxlayout;
     QVBoxLayout     *newtextboxlayout;
+    QVBoxLayout     *newmtexteditlayout;
     QVBoxLayout     *newcomboboxlayout;
     QVBoxLayout     *newlabellayout;
     QScrollArea     *scrollArea;
