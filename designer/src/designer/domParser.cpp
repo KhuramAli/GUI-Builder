@@ -575,6 +575,7 @@ QByteArray domParser::writeFlexview(QDomDocument doc)
     QDomText fv = doc.createTextNode(flexview_properties::formPro.value("formValidation"));
     formValidation.appendChild(fv);
 
+qDebug() << DockedMainWindow::flex->widgetList;
 
     return doc.toByteArray();
 }

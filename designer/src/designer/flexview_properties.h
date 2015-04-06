@@ -100,15 +100,6 @@ private:
     QHash<QString, QHash<QString,QString>> widgetList;
     QStringList stringList;
     QFile * settingFile;
-
-    struct propertyList
-    {
-        QString classname;
-        QString title;
-        QHash<QString, QString> list;
-    };
-
-    QHash<QString, propertyList*> hashList;
 };
 
 #endif // FLEXVIEW_PROPERTIES_H

@@ -1163,7 +1163,6 @@ for(int i = 0; i < stackedWidget->children().size(); i++){
 void flexview_properties::updateList()
 {
     QWidget *stackWidget = stackArea->currentWidget();
-    propertyList *prolist = new propertyList;
     QString temp;
     QString ischecked = "false";
     QLineEdit *newline;
@@ -1175,11 +1174,6 @@ void flexview_properties::updateList()
         temp = stackWidget->children().at(i)->metaObject()->className();
         if( temp == TEXTBOX){
             newline = (QLineEdit*)stackWidget->children().at(i);
-            prolist->classname = className;
-            prolist->title = currentWidget->property("text").toString();
-            prolist->list.insert(newline->objectName(), newline->text());
-            hashList.insert(currentWidget->objectName(),prolist);
-
             hash.insert(newline->objectName(),newline->text());
             widgetList.insert(currentWidget->objectName(),hash);
 
@@ -1190,20 +1184,11 @@ void flexview_properties::updateList()
             }else{
                 ischecked = "false";
             }
-            prolist->classname = className;
-            prolist->title = currentWidget->property("text").toString();
-            prolist->list.insert(newcheckbox->objectName(), ischecked);
-            hashList.insert(currentWidget->objectName(),prolist);
             hash.insert(newcheckbox->objectName(),ischecked);
             widgetList.insert(currentWidget->objectName(),hash);
 
         }else if( temp == COMBOBOX){
             newcombo = (QComboBox*)stackWidget->children().at(i);
-            prolist->classname = className;
-            prolist->title = currentWidget->property("text").toString();
-            prolist->list.insert(newcombo->objectName(), newcombo->currentText());
-            hashList.insert(currentWidget->objectName(),prolist);
-
             hash.insert(newcombo->objectName(),newcombo->currentText());
             widgetList.insert(currentWidget->objectName(),hash);
             }
