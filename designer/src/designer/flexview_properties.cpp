@@ -173,7 +173,7 @@ if (propertyName != temp.at(0)){
         newline->setObjectName(propertyName);
         newline->setAccessibleName(className);
         newlabel->setBuddy(newline);
-
+        connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
         newhbox->addWidget(newlabel);
         newhbox->addWidget(newline);
     }
@@ -186,7 +186,7 @@ if (propertyName != temp.at(0)){
         newcheckbox->setAccessibleName(className);
         newlabel->setAccessibleName(className);
         newlabel->setBuddy(newcheckbox);
-
+        connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
         newhbox->addWidget(newlabel);
         newhbox->addWidget(newcheckbox);
     }
@@ -199,7 +199,7 @@ if (propertyName != temp.at(0)){
         newcombobox->setAccessibleName(className);
         newlabel->setAccessibleName(className);
         newlabel->setBuddy(newcombobox);
-
+        connect(newcombobox,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
         newhbox->addWidget(newlabel);
         newhbox->addWidget(newcombobox);
     }
