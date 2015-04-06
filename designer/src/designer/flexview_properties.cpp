@@ -25,6 +25,8 @@ QWidget* flexview_properties::textboxProperties;
 QWidget* flexview_properties::mtexteditProperties;
 QWidget* flexview_properties::comboboxProperties;
 QWidget* flexview_properties::labelProperties;
+QWidget* flexview_properties::calanderProperties;
+QWidget* flexview_properties::tableProperties;
 QWidget* flexview_properties::tempwidget;
 QString flexview_properties::className;
 
@@ -37,6 +39,8 @@ QString flexview_properties::className;
 #define MTEXTEDIT   "QTextEdit"
 #define COMBOBOX    "QComboBox"
 #define LABEL       "QLabel"
+#define CALANDER    "QCalendarWidget"
+#define TABLE       "QTableWidget"
 #define DIALOG      "QDesignerDialog"
 
 flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
@@ -56,6 +60,9 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     textboxProperties   = new QWidget;
     comboboxProperties  = new QWidget;
     labelProperties     = new QWidget;
+    calanderProperties  = new QWidget;
+    mtexteditProperties = new QWidget;
+    tableProperties     = new QWidget;
 
     connect(newProperty, SIGNAL(clicked()),this,SLOT(showDialog()));
     connect(removeProperty, SIGNAL(clicked()),this,SLOT(showRemove()));
@@ -74,14 +81,6 @@ flexview_properties::flexview_properties(QWidget * parent):QDialog(parent)
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
 
-    formProperties      = new QWidget;
-    buttonProperties    = new QWidget;
-    checkboxProperties  = new QWidget;
-    textboxProperties   = new QWidget;
-    mtexteditProperties = new QWidget;
-    comboboxProperties  = new QWidget;
-    labelProperties     = new QWidget;
-
     setWindowTitle(tr("FlexView Properties"));
     
 if (!settingFile->exists("settings.ini")){
@@ -98,6 +97,8 @@ loadComboboxSettings();
 loadLabelSettings();
 loadTextboxSettings();
 loadMtextEditSettings();
+loadCalanderSettings();
+loadTableSettings();
 stackArea->setCurrentWidget(tempwidget);
 }
 
@@ -214,6 +215,10 @@ if (propertyName != temp.at(0)){
         newcomboboxlayout->addLayout(newhbox);
     }else if (className == LABEL){
         newlabellayout->addLayout(newhbox);
+    }else if (className == CALANDER){
+        newcalanderlayout->addLayout(newhbox);
+    }else if (className == TABLE){
+        newtablelayout->addLayout(newhbox);
     }else{
         layout->addLayout(newhbox);
     }
@@ -841,6 +846,158 @@ QString temp;
     stackArea->addWidget(labelProperties);
 }
 
+void flexview_properties::loadCalanderSettings()
+{
+    widget_key textkey(CALANDER,PSTRING);
+    widget_key boolkey(CALANDER,PBOOL);
+    widget_key combokey(CALANDER,PCOMBO);
+    newcalanderlayout = new QVBoxLayout;
+
+    QHash<widget_key, QString>::iterator i = newProperties.find(textkey);
+
+        while (i != newProperties.end() && i.key() == textkey) {
+            QLabel      *newlabel   = new QLabel(i.value()) ;
+            QLineEdit   *newline    = new QLineEdit;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newline);
+            newlabel->setObjectName(i.value());
+            newline->setObjectName(i.value());
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newline);
+            newcalanderlayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
+            ++i;
+        }
+
+        i = newProperties.find(boolkey);
+
+        while (i != newProperties.end() && i.key() == boolkey) {
+            QLabel      *newlabel       = new QLabel(i.value()) ;
+            QCheckBox   *newcheckbox    = new QCheckBox;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newcheckbox);
+            newlabel->setObjectName(i.value());
+            newcheckbox->setObjectName(i.value());
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newcheckbox);
+            newcalanderlayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
+            ++i;
+        }
+
+        i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
+
+        while (i != newProperties.end() && i.key() == combokey) {
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+            combolist.removeAt(0);
+
+            QLabel      *newlabel   = new QLabel(value) ;
+            QComboBox   *newcombo   = new QComboBox;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newcombo);
+            newlabel->setObjectName(value);
+            newcombo->setObjectName(value);
+            newcombo->addItems(combolist);
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newcombo);
+            newcalanderlayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
+            ++i;
+        }
+
+    calanderProperties->setLayout(newcalanderlayout);
+    calanderProperties->setObjectName(CALANDER);
+    stackArea->addWidget(calanderProperties);
+}
+
+void flexview_properties::loadTableSettings()
+{
+    widget_key textkey(TABLE,PSTRING);
+    widget_key boolkey(TABLE,PBOOL);
+    widget_key combokey(TABLE,PCOMBO);
+    newtablelayout = new QVBoxLayout;
+
+    QHash<widget_key, QString>::iterator i = newProperties.find(textkey);
+
+        while (i != newProperties.end() && i.key() == textkey) {
+            QLabel      *newlabel   = new QLabel(i.value()) ;
+            QLineEdit   *newline    = new QLineEdit;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newline);
+            newlabel->setObjectName(i.value());
+            newline->setObjectName(i.value());
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newline);
+            newtablelayout->addLayout(newhbox);
+            connect(newline,SIGNAL(editingFinished()),this,SLOT(updateList()));
+            ++i;
+        }
+
+        i = newProperties.find(boolkey);
+
+        while (i != newProperties.end() && i.key() == boolkey) {
+            QLabel      *newlabel       = new QLabel(i.value()) ;
+            QCheckBox   *newcheckbox    = new QCheckBox;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newcheckbox);
+            newlabel->setObjectName(i.value());
+            newcheckbox->setObjectName(i.value());
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newcheckbox);
+            newtablelayout->addLayout(newhbox);
+            connect(newcheckbox,SIGNAL(released()),this,SLOT(updateList()));
+            ++i;
+        }
+
+        i = newProperties.find(combokey);
+//logic should be improved. not an Elegant solution.
+QStringList combolist;
+QStringList templist;
+QString value;
+QString temp;
+
+        while (i != newProperties.end() && i.key() == combokey) {
+            templist = i.value().split(",",QString::SkipEmptyParts);
+            value = templist.at(0);
+            templist.removeAt(0);
+            temp = templist.join("\n");
+            combolist = temp.split("\n");
+            combolist.removeAt(0);
+
+            QLabel      *newlabel   = new QLabel(value) ;
+            QComboBox   *newcombo   = new QComboBox;
+            QHBoxLayout * newhbox = new QHBoxLayout;
+
+            newlabel->setBuddy(newcombo);
+            newlabel->setObjectName(value);
+            newcombo->setObjectName(value);
+            newcombo->addItems(combolist);
+            newhbox->addWidget(newlabel);
+            newhbox->addWidget(newcombo);
+            newtablelayout->addLayout(newhbox);
+            connect(newcombo,SIGNAL(currentTextChanged(QString)),this,SLOT(updateList()));
+            ++i;
+        }
+
+    tableProperties->setLayout(newtablelayout);
+    tableProperties->setObjectName(TABLE);
+    stackArea->addWidget(tableProperties);
+}
+
 QString flexview_properties::getClassName()
 {
     return className;
@@ -911,7 +1068,6 @@ void flexview_properties::showRemove()
 void flexview_properties::removeProperties(QString propertyName)
 {
     QWidget *stackWidget = stackArea->currentWidget();
-    /*if (className == BUTTON){*/
         for(int i = 0; i <stackWidget->children().size(); i++){
             if(stackWidget->children().at(i)->objectName() == propertyName){
                 delete stackWidget->children().at(i);

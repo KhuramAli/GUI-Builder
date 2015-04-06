@@ -54,6 +54,8 @@ private:
     void loadMtextEditSettings();
     void loadComboboxSettings();
     void loadLabelSettings();
+    void loadCalanderSettings();
+    void loadTableSettings();
     void updatePropertyList(QWidget* stackedWidget);
 
     static QWidget *formProperties;
@@ -63,6 +65,8 @@ private:
     static QWidget *mtexteditProperties;
     static QWidget *comboboxProperties;
     static QWidget *labelProperties;
+    static QWidget *calanderProperties;
+    static QWidget *tableProperties;
     static QWidget *tempwidget;
     static QHash<QString,QString> formPro;
     static QString className;
@@ -86,6 +90,8 @@ private:
     QVBoxLayout     *newmtexteditlayout;
     QVBoxLayout     *newcomboboxlayout;
     QVBoxLayout     *newlabellayout;
+    QVBoxLayout     *newcalanderlayout;
+    QVBoxLayout     *newtablelayout;
     QScrollArea     *scrollArea;
     QStackedWidget  *stackArea;
     QWidget         *currentWidget;
