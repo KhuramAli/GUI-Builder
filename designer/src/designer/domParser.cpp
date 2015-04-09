@@ -76,6 +76,7 @@ void domParser::parseElement(QDomElement root, QString tag)
                 flexWidget->widgetName = _QPbutton;
                 flexWidget->name = "Button";
                 widget(parentElement, _widget, flexWidget);
+                parseFlexProperties(_QPbutton);
         }
 
         //identifying vertical layouts.
@@ -550,6 +551,8 @@ void domParser::closingDefault()
 
 QByteArray domParser::writeFlexview(QDomDocument doc)
 {
+QList<QString> list = DockedMainWindow::flex->widgetList.keys();
+QList <QString> proList;
 
     QDomElement properties = doc.createElement("Properties");
     properties.setAttribute("name", "flexview");
@@ -575,7 +578,30 @@ QByteArray domParser::writeFlexview(QDomDocument doc)
     QDomText fv = doc.createTextNode(flexview_properties::formPro.value("formValidation"));
     formValidation.appendChild(fv);
 
-qDebug() << DockedMainWindow::flex->widgetList;
+for(int i = 0; i < list.size(); i++){
+    QDomElement pro = doc.createElement("Properties");
+    if(list.value(i)!= NULL){
+        pro.setAttribute("name", list.value(i));
+        doc.appendChild(pro);
+        proList = DockedMainWindow::flex->widgetList.value(list.value(i)).keys();
+    }
 
+    for (int j = 0; j < proList.size(); j++){
+        if(proList.value(j)!= NULL){
+            QDomElement elem = doc.createElement(proList.value(j));
+            pro.appendChild(elem);
+            QDomText t = doc.createTextNode(DockedMainWindow::flex->widgetList.value(list.value(i)).value(proList.value(j)));
+            elem.appendChild(t);
+        }
+    }
+
+}
     return doc.toByteArray();
+}
+
+void domParser::parseFlexProperties(QString name)
+{
+    //qDebug () << name;
+    //QList<QString> list = DockedMainWindow::flex->widgetList.keys();
+
 }

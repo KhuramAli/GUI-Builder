@@ -1456,7 +1456,9 @@ void QDesignerActions::printPreviewImage()
 
 void QDesignerActions::loadFlexviewPro(QString file)
 {
-
+QString error;
+int line;
+int col;
     QFile fn(file);
     if(!fn.open(QFile::ReadOnly))
     {
@@ -1468,15 +1470,18 @@ void QDesignerActions::loadFlexviewPro(QString file)
    origXML.append("</root>");
 
     QDomDocument doc;
-    if(!doc.setContent(origXML))
+
+    if(!(doc.setContent(origXML,&error,&line,&col)))
         {
-            qDebug() <<  "File error!";
+            qDebug() <<  error << line << col;
+            fn.close();
         }
 
+    fn.close();
     QDomElement root = doc.documentElement();
     QDomNodeList nodes = root.elementsByTagName("Properties");
     QDomElement parentElement;
-
+QHash<QString,QString> hash;
 
         for (int i = 0; i < nodes.count(); i++)
         {
@@ -1489,7 +1494,8 @@ void QDesignerActions::loadFlexviewPro(QString file)
                 if(e.isElement())
                 {
                     parentElement = e.toElement();
-
+                    hash.insert(parentElement.tagName(),parentElement.text());
+                    DockedMainWindow::flex->widgetList.insert( nodes.at(i).toElement().attribute("name"),hash);
                 }
 
                 if (parentElement.tagName() == "message")

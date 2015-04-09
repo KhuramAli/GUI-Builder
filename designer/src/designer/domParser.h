@@ -48,6 +48,7 @@ private:
     void parseElement(QDomElement root, QString tag);
     void widget(QDomElement parentElement, QString att, widgetStruct * flexWidget);
     void actions(QDomElement parentElement);
+    void parseFlexProperties(QString name);
 
     void titleDefault ();
     void closingDefault();

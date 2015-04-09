@@ -55,6 +55,7 @@ private:
     void loadLabelSettings();
     void loadCalanderSettings();
     void loadTableSettings();
+    void loadLayoutSettings();
     void updatePropertyList(QWidget* stackedWidget);
 
     static QWidget *formProperties;
@@ -66,6 +67,7 @@ private:
     static QWidget *labelProperties;
     static QWidget *calanderProperties;
     static QWidget *tableProperties;
+    static QWidget *layoutProperties;
     static QWidget *tempwidget;
     static QHash<QString,QString> formPro;
     static QString className;
@@ -91,6 +93,7 @@ private:
     QVBoxLayout     *newlabellayout;
     QVBoxLayout     *newcalanderlayout;
     QVBoxLayout     *newtablelayout;
+    QVBoxLayout     *newlayoutlayout;
     QScrollArea     *scrollArea;
     QStackedWidget  *stackArea;
     QWidget         *currentWidget;
