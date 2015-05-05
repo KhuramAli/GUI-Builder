@@ -16,6 +16,7 @@
 #include <QStackedWidget>
 #include <QScrollArea>
 #include <QMessageBox>
+#include <QDir>
 
 QHash<QString, QString> flexview_properties::formPro;
 QWidget* flexview_properties::formProperties;
@@ -90,7 +91,7 @@ if (!settingFile->exists("settings.ini")){
     settingFile = new QFile("settings.ini");
 }else{
     settingFile = new QFile;
-    loadSettings();
+   // loadSettings();
 }
 
 loadFormSettings();
@@ -238,24 +239,14 @@ if (propertyName != temp.at(0)){
 
 void flexview_properties::saveSettings(QHash<QPair <QString, QString>, QString> newProperties)
 {
-    settingFile->setFileName("settings.ini");
+QString fileName = "settings.ini";
+    QDir dir ("backup");
+    settingFile->setFileName(fileName);
     if(settingFile->open(QFile::WriteOnly)){
             settingFile->atEnd();
             QDataStream out(settingFile);
                    out << newProperties;
                    settingFile->close();
-    }
-}
-
-void flexview_properties::loadSettings()
-{
-    settingFile->setFileName("settings.ini");
-    if(settingFile->open(QFile::ReadOnly)){
-        QDataStream in(settingFile);
-        while(!settingFile->atEnd()){
-            in >> newProperties;
-        }
-    settingFile->close();
     }
 }
 
@@ -1086,7 +1077,7 @@ QString flexview_properties::getClassName()
 }
 
 QStringList* flexview_properties::getPropertyList()
-{
+{qDebug() << "getPropertyList";
     QObjectList list;
 
     if(className == BUTTON){

@@ -409,11 +409,11 @@ void DockedMainWindow::restoreSettings(const QDesignerSettings &s, const DockWid
     if (!restored) {
         // Default: Tabify less relevant windows bottom/right.
 
-       tabifyDockWidget(dws.at(QDesignerToolWindow::FlexviewEditor),
-                         dws.at(QDesignerToolWindow::ActionEditor));
+      //tabifyDockWidget(dws.at(QDesignerToolWindow::FlexviewEditor),
+                        // dws.at(QDesignerToolWindow::ActionEditor));
 
-       // tabifyDockWidget(dws.at(QDesignerToolWindow::ActionEditor),
-                  //dws.at(QDesignerToolWindow::ResourceEditor));
+       //tabifyDockWidget(dws.at(QDesignerToolWindow::ActionEditor),
+         //         dws.at(QDesignerToolWindow::ResourceEditor));
     }
 }
 
